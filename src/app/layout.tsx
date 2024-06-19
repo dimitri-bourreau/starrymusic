@@ -4,12 +4,12 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Their Side',
+    template: '%s - starrymusic.fr',
     default:
-      'Their Side - Conversations with the most tragically misunderstood people of our time',
+      'starrymusic - Musiques et paroles de Starrysky',
   },
   description:
-    'Conversations with the most tragically misunderstood people of our time.',
+    'Site réalisé par des fans de Starrysky pour regrouper leurs musiques avec leurs paroles.',
 }
 
 export default function RootLayout({
