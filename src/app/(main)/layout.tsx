@@ -27,10 +27,10 @@ export default function MainLayout({
 
   return (
     <AudioProvider>
-      <header className="bg-slate-50 lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-112 lg:items-start lg:overflow-y-auto xl:w-120">
+      <header className="bg-slate-50 dark:bg-black lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-112 lg:items-start lg:overflow-y-auto xl:w-120">
         <div className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl]">
-          <span className="font-mono text-slate-500">Starrysky</span>
-          <span className="mt-6 flex gap-6 font-bold text-slate-900">
+          <span className="font-mono text-slate-500 dark:text-zinc-50">Starrysky</span>
+          <span className="mt-6 flex gap-6 font-bold text-slate-900 dark:text-zinc-500">
             {hosts.map((host, hostIndex) => (
               <Fragment key={host}>
                 {hostIndex !== 0 && (
@@ -43,10 +43,10 @@ export default function MainLayout({
             ))}
           </span>
         </div>
-        <div className="relative z-10 mx-auto px-4 pb-4 pt-10 sm:px-6 md:max-w-2xl md:px-4 lg:min-h-full lg:flex-auto lg:border-x lg:border-slate-200 lg:px-8 lg:py-12 xl:px-12">
+        <div className="relative z-10 mx-auto px-4 pb-4 pt-10 sm:px-6 md:max-w-2xl md:px-4 lg:min-h-full lg:flex-auto lg:border-x lg:border-slate-200 dark:border-slate-800 lg:px-8 lg:py-12 xl:px-12">
           <Link
             href="/"
-            className="relative mx-auto block w-48 overflow-hidden rounded-lg bg-slate-200 shadow-xl shadow-slate-200 sm:w-64 sm:rounded-xl lg:w-auto lg:rounded-2xl"
+            className="relative mx-auto block w-48 overflow-hidden rounded-lg bg-slate-200 shadow-xl shadow-slate-200 dark:shadow-slate-800 sm:w-64 sm:rounded-xl lg:w-auto lg:rounded-2xl"
             aria-label="Homepage"
           >
             <Image
@@ -59,16 +59,16 @@ export default function MainLayout({
             <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-black/10 sm:rounded-xl lg:rounded-2xl" />
           </Link>
           <div className="mt-10 text-center lg:mt-12 lg:text-left">
-            <p className="text-xl font-bold text-slate-900">
+            <p className="text-xl font-bold text-slate-900 dark:text-slate-400">
               <Link href="/">starrymusic.fr</Link>
             </p>
-            <p className="mt-3 text-lg font-medium leading-8 text-slate-700">
+            <p className="mt-3 text-lg font-medium leading-8 text-slate-700 dark:text-zinc-300">
               Site réalisé par des fans de Starrysky pour regrouper leurs musiques avec leurs paroles.
             </p>
           </div>
           <AboutSection className="mt-12 hidden lg:block" />
           <section className="mt-10 lg:mt-12">
-            <h2 className="sr-only flex items-center font-mono text-sm font-medium leading-7 text-slate-900 lg:not-sr-only">
+            <h2 className="sr-only flex items-center font-mono text-sm font-medium leading-7 text-slate-900 dark:text-slate-400 lg:not-sr-only">
               <TinyWaveFormIcon
                 colors={['fill-indigo-300', 'fill-blue-300']}
                 className="h-2.5 w-2.5"
@@ -94,7 +94,7 @@ export default function MainLayout({
                     className="group flex items-center"
                     aria-label={label}
                   >
-                    <span className="hidden sm:block">{label}</span>
+                    <span className="hidden sm:block dark:text-zinc-300">{label}</span>
                   </Link>
                 </li>
               ))}
