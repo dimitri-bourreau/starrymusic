@@ -15,7 +15,7 @@ export function AboutSection(props: React.ComponentPropsWithoutRef<'section'>) {
           colors={['fill-violet-300', 'fill-pink-300']}
           className="h-2.5 w-2.5"
         />
-        <span className="ml-2.5">About</span>
+        <span className="ml-2.5">Starrysky</span>
       </h2>
       <p
         className={clsx(
@@ -23,11 +23,7 @@ export function AboutSection(props: React.ComponentPropsWithoutRef<'section'>) {
           !isExpanded && 'lg:line-clamp-4',
         )}
       >
-        In this show, Eric and Wes dig deep to get to the facts with guests who
-        have been labeled villains by a society quick to judge, without actually
-        getting the full story. Tune in every Thursday to get to the truth with
-        another misunderstood outcast as they share the missing context in their
-        tragic tale.
+        Starrysky, parfait équilibre entre métal progressif et j-pop, est un groupe culte de l’Internet français. Starrysky s’est créé sa propre identité avec des albums forts, marquants, et conceptuels. Le dernier, Timeshift, utilise notamment des sons retournés dans le temps. Ils travaillent officiellement aux côtés de Genshin Impact pour qui ils ont composé des titres originaux. Starrysky est un groupe qui marque par son génie dans la composition, par ses nombreuses références à l’univers pop japonais et au rock progressif, et aussi par leur authenticité et leur disponibilité sur les réseaux et à leurs concerts.
       </p>
       {!isExpanded && (
         <button
@@ -35,7 +31,7 @@ export function AboutSection(props: React.ComponentPropsWithoutRef<'section'>) {
           className="mt-2 hidden text-sm font-bold leading-6 text-pink-500 hover:text-pink-700 active:text-pink-900 lg:inline-block"
           onClick={() => setIsExpanded(true)}
         >
-          Show more
+          Lire plus
         </button>
       )}
     </section>
