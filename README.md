@@ -1,34 +1,35 @@
-# Transmit
+# Starrymusic
 
-Transmit is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+Site réalisé par des fans de Starrysky pour regrouper leurs musiques avec leurs paroles.
 
-## Getting started
+## Exécuter localement
 
-To get started with this template, first install the npm dependencies:
+```shell
+# installer les dépendances
+npm i
 
-```bash
-npm install
-```
+# mettre en place la bdd, voir ci-dessous dans le README
 
-Next, run the development server:
-
-```bash
+# exécuter le serveur de dev
 npm run dev
 ```
 
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+### Base de données
 
-## Customizing
+Ce site est rendu côté serveur (SSR).
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+On se sert d'une base de données Postgres pour agglomérer les informations concernant Starrysky : leurs musiques, leurs albums, etc.
 
-## License
+Le dump de la base de données est disponible ici : `/starrysky-data.sql`.
 
-This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
+J'utilise postgres@16.
 
-## Learn more
 
-To learn more about the technologies used in this site template, see the following resources:
+## Participer
 
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
+- Via GitHub
+  - Vous pouvez [créer une `issue`](https://github.com/dimitri-bourreau/starrymusic/issues/new).
+  - Vous pouvez proposer une PR pointant sur `main`. 
+    - Aucune PR modifiant la BDD sera acceptée (peut être qu'une interface admin sera disponible au futur).
+- Sans GitHub
+  - Vous pouvez me contacter à `dimitri@release-dev.com`.
