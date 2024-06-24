@@ -1,7 +1,12 @@
+'use client'
+
 import getAllMusic from '@/starrysky-music/features/get-all-music'
 import getAlbum from '@/starrysky-music/features/get-album'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
-export default async function Home() {
+export default function Home() {
+  const router = useRouter()
   const songs = getAllMusic()
 
   return (
@@ -47,6 +52,7 @@ export default async function Home() {
             <tr
               key={`${title}:${album}`}
               className="cursor-pointer hover:bg-pink-600/50"
+              onClick={() => router.push(encodeURI(`/${title}:${album}`))}
             >
               <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
                 <div className="flex gap-x-3">
@@ -57,10 +63,12 @@ export default async function Home() {
               </td>
               <td className="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
                 <div className="flex items-center gap-x-4">
-                  <img
+                  <Image
                     src={getAlbum(album).image}
                     alt={album}
-                    className="h-10 w-10 rounded-sm bg-gray-800"
+                    className="rounded-sm bg-gray-800"
+                    width={40}
+                    height={40}
                   />
                   <div className="truncate text-sm font-medium leading-6 text-gray-400">
                     {album}
