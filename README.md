@@ -33,3 +33,8 @@ J'utilise postgres@16.
     - Aucune PR modifiant la BDD sera acceptée (peut être qu'une interface admin sera disponible au futur).
 - Sans GitHub
   - Vous pouvez me contacter à `dimitri@release-dev.com`.
+
+## TODO
+
+- Trier les tableaux automatiquement
+- Filtres/Recherche
