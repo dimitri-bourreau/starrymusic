@@ -26,7 +26,6 @@ export default function InternalLinks() {
           [
             ['Toutes les musiques', '/'],
             ['Albums', '/albums'],
-            ['Playlists', '/playlists'],
           ] as const
         ).map(([label, link]) => (
           <li key={label} className="flex">
