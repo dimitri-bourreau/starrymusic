@@ -1,7 +1,7 @@
 export default interface Music {
   title: string
   album: string
-  year: string
+  year: number
   duration: string
   credits: {
     music: string | null
@@ -9,5 +9,5 @@ export default interface Music {
     'lead-vocals': string | null
     extra: string[] | null
   } | null
-  lyrics: string[][]
+  lyrics: string[][] | null
 }
