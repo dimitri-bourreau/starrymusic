@@ -1,16 +1,12 @@
-import { Fragment } from 'react'
+import { Fragment, ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { TinyWaveFormIcon } from '@/components/TinyWaveFormIcon'
 import { Waveform } from '@/components/Waveform'
 import posterImage from '@/images/poster.jpg'
+import ExternalLinks from '@/components/ExternalLinks'
 
-export default function MainLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function MainLayout({ children }: { children: ReactNode }) {
   let hosts = ['Tai', 'Sasha', 'Yuki', 'Logan', 'Neku']
 
   return (
@@ -57,56 +53,15 @@ export default function MainLayout({
               musiques avec leurs paroles.
             </p>
           </div>
-          <section className="mt-10 lg:mt-12">
-            <h2 className="sr-only flex items-center font-mono text-sm font-medium leading-7 text-slate-900 lg:not-sr-only dark:text-slate-400">
-              <TinyWaveFormIcon
-                colors={['fill-indigo-300', 'fill-blue-300']}
-                className="h-2.5 w-2.5"
-              />
-              <span className="ml-2.5">Liens</span>
-            </h2>
-            <div className="h-px bg-gradient-to-r from-slate-200/0 via-slate-200 to-slate-200/0 lg:hidden" />
-            <ul
-              role="list"
-              className="mt-4 flex justify-center gap-10 text-base font-medium leading-7 text-slate-700 sm:gap-8 lg:flex-col lg:gap-4"
-            >
-              {(
-                [
-                  ['Site officiel de Starrysky', 'https://www.starrysky.fr/'],
-                  [
-                    'Instagram de Starrysky',
-                    'https://www.instagram.com/starrysky_band/',
-                  ],
-                  [
-                    'Playlists pour découvrir Starrysky',
-                    'https://linktr.ee/discover_starrysky',
-                  ],
-                  [
-                    'Code source',
-                    'https://github.com/dimitri-bourreau/starrymusic',
-                  ],
-                ] as const
-              ).map(([label, link]) => (
-                <li key={label} className="flex">
-                  <Link
-                    href={link}
-                    className="group flex items-center"
-                    aria-label={label}
-                  >
-                    <span className="hidden sm:block dark:text-zinc-300">
-                      {label}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
+
+          <ExternalLinks className="hidden lg:block" />
         </div>
       </header>
 
       <main className="border-slate-200 lg:relative lg:mb-28 lg:ml-112 lg:border-t-0 xl:ml-120">
         <Waveform className="absolute left-0 top-0 h-20 w-full" />
         <div className="relative">{children}</div>
+        <ExternalLinks className="lg:hidden" />
       </main>
     </>
   )
