@@ -7,7 +7,7 @@ import posterImage from '@/images/poster.jpg'
 import ExternalLinks from '@/components/ExternalLinks'
 
 export default function MainLayout({ children }: { children: ReactNode }) {
-  let hosts = ['Tai', 'Sasha', 'Yuki', 'Logan', 'Neku']
+  const hosts = ['Tai', 'Sasha', 'Yuki', 'Logan', 'Neku']
 
   return (
     <>
