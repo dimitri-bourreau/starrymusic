@@ -14,16 +14,6 @@ npm i
 npm run dev
 ```
 
-### Base de données
-
-Ce site est rendu côté serveur (SSR).
-
-On se sert d'une base de données Postgres pour agglomérer les informations concernant Starrysky : leurs musiques, leurs albums, etc.
-
-Le dump de la base de données est disponible ici : `/starrysky-data.sql`.
-
-J'utilise postgres@16.
-
 
 ## Participer
 
