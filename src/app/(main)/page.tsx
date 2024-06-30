@@ -11,16 +11,13 @@ export default function Home() {
 
   return (
     <div className="px-4 py-10">
-      <h2 className="px-4 text-base font-semibold leading-7 text-slate-700 sm:px-6 lg:px-8 dark:text-white">
+      <h2 className="px-4 text-2xl font-semibold leading-7 text-slate-700 sm:px-6 lg:px-8 dark:text-white">
         Toutes les musiques
       </h2>
-      <table className="mt-6 w-full whitespace-nowrap text-left">
+      <table className="mt-8 w-full whitespace-nowrap text-left">
         <thead className="border-b border-white/10 text-sm leading-6 text-slate-700 dark:text-white">
           <tr>
-            <th
-              scope="col"
-              className="hidden py-2 pl-0 pr-8 font-semibold sm:table-cell"
-            >
+            <th scope="col" className="hidden p-4 font-semibold sm:table-cell">
               Titre
             </th>
             <th
@@ -54,7 +51,7 @@ export default function Home() {
               className="cursor-pointer hover:bg-pink-600/10 dark:hover:bg-pink-600/50"
               onClick={() => router.push(encodeURI(`/${title}:${album}`))}
             >
-              <td className="hidden py-4 pl-0 pr-4 sm:table-cell sm:pr-8">
+              <td className="hidden p-4 sm:table-cell sm:pr-8">
                 <div className="flex gap-x-3">
                   <div className="font-mono text-sm leading-6 text-slate-700 dark:text-white">
                     {title}
