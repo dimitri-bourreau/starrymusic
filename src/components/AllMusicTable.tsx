@@ -7,6 +7,11 @@ export default function AllMusicTable() {
   const router = useRouter()
   const songs = getAllMusic()
 
+  const redirectToTitle = (title: string) => {
+    const url = encodeURI(`/${title}`)
+    router.push(url)
+  }
+
   return (
     <table className="mt-8 w-full whitespace-nowrap text-left">
       <thead className="border-b border-white/10 text-sm leading-6 text-slate-700 dark:text-white">
@@ -44,7 +49,7 @@ export default function AllMusicTable() {
           <tr
             key={`${title}:${album}`}
             className="cursor-pointer hover:bg-pink-600/10 dark:hover:bg-pink-600/50"
-            onClick={() => router.push(encodeURI(`/${title}:${album}`))}
+            onClick={() => redirectToTitle(title)}
           >
             <td className="p-4 sm:pr-8">
               <div className="flex gap-x-3">
