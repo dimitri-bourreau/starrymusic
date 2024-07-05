@@ -1,0 +1,83 @@
+'use client'
+
+import { ReactNode } from 'react'
+import getMusic from '@/starrysky-music/features/get-music'
+import Image from 'next/image'
+import Tabs from '@/components/Tabs'
+import { usePathname, useRouter } from 'next/navigation'
+import getAlbum from '@/starrysky-music/features/get-album'
+
+interface MusicLayoutProps {
+  children: ReactNode
+  params: {
+    title: string
+  }
+}
+
+export default function MusicLayout({ children, params }: MusicLayoutProps) {
+  const router = useRouter()
+  const pathName = usePathname()
+  const title = decodeURIComponent(params.title)
+
+  const musicDetails = getMusic(title)
+  const associatedAlbum = musicDetails
+    ? getAlbum(musicDetails.album)
+    : undefined
+  const tabs = [
+    {
+      name: 'Paroles',
+      href: `/${title}/paroles`,
+      current: pathName.includes('paroles'),
+    },
+    {
+      name: 'Détails',
+      href: `/${title}/details`,
+      current: pathName.includes('details'),
+    },
+    {
+      name: 'Écouter',
+      href: `/${title}/ecouter`,
+      current: pathName.includes('ecouter'),
+    },
+  ]
+
+  const handleTabChange = (href: string) => {
+    router.push(href)
+  }
+
+  return (
+    <div className="px-4 py-10">
+      {!musicDetails ? (
+        <p className="mt-24 p-10">
+          Cette musique n&apos;a pas été trouvée, oups, il faut en parler à
+          Dimitri. 🤔
+        </p>
+      ) : (
+        <>
+          <div className="flex gap-4 px-4 py-5 sm:p-6">
+            <div className="w-1/3">
+              <Image
+                src={
+                  associatedAlbum?.image || '/albums/default-album-cover.jpg'
+                }
+                className="rounded"
+                alt="Album cover"
+                width={400}
+                height={400}
+              />
+            </div>
+            <div className="flex w-2/3 flex-col justify-center">
+              <h1 className="px-4 text-2xl font-semibold leading-7 text-slate-700 sm:px-6 lg:px-8 dark:text-white">
+                {title}
+              </h1>
+            </div>
+          </div>
+
+          <Tabs tabs={tabs} onChange={handleTabChange} />
+
+          {children}
+        </>
+      )}
+    </div>
+  )
+}

@@ -61,7 +61,9 @@ export default function AllMusicTable() {
             <td className="hidden py-4 pl-4 pr-8 sm:table-cell sm:pl-6 lg:pl-8">
               <div className="flex items-center gap-x-4">
                 <Image
-                  src={getAlbum(album).image}
+                  src={
+                    getAlbum(album)?.image || '/albums/default-album-cover.jpg'
+                  }
                   alt={album}
                   className="rounded-sm bg-gray-800"
                   width={40}
