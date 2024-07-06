@@ -28,7 +28,12 @@ export default function Page({ params }: PageProps) {
         return (
           <div key={chapterIndex}>
             {chapter.map((line, lineIndex) => (
-              <p key={`${chapterIndex}${lineIndex}`}>{line}</p>
+              <p
+                className="dark:text-white"
+                key={`${chapterIndex}${lineIndex}`}
+              >
+                {line}
+              </p>
             ))}
           </div>
         )

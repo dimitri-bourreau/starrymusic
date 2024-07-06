@@ -21,8 +21,10 @@ const MusicDetails = ({ musicData }: MusicDetailsProps) => {
   return (
     <dl className="divide-y divide-gray-100">
       <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900">Titre</dt>
-        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
+          Titre
+        </dt>
+        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 dark:text-white">
           {musicData.title}
         </dd>
       </div>
@@ -30,29 +32,35 @@ const MusicDetails = ({ musicData }: MusicDetailsProps) => {
         className="cursor-pointer px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
         onClick={() => redirectToAlbum(musicData.album)}
       >
-        <dt className="text-sm font-medium leading-6 text-gray-900">Album</dt>
-        <dd className="mt-1 text-sm leading-6 text-pink-700 sm:col-span-2 sm:mt-0">
+        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
+          Album
+        </dt>
+        <dd className="mt-1 text-sm leading-6 text-pink-700 sm:col-span-2 sm:mt-0 dark:text-pink-500">
           {musicData.album}
         </dd>
       </div>
       <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900">Année</dt>
-        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
+          Année
+        </dt>
+        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 dark:text-white">
           {musicData.year}
         </dd>
       </div>
       <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900">Durée</dt>
-        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
+          Durée
+        </dt>
+        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 dark:text-white">
           {musicData.duration}
         </dd>
       </div>
       {musicData.credits && (
         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-          <dt className="text-sm font-medium leading-6 text-gray-900">
+          <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
             Crédits
           </dt>
-          <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 dark:text-white">
             <ul>
               {musicData.credits.music && (
                 <li>Musique : {musicData.credits.music}</li>

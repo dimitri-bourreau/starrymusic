@@ -56,7 +56,7 @@ export default function AllAlbumsTable() {
           <tr
             key={`${title}:${image}`}
             className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
-              'bg-pink-200': decodedPathName.includes(title),
+              'bg-pink-200 dark:bg-pink-800': decodedPathName.includes(title),
               'hover:bg-pink-600/10': !decodedPathName.includes(title),
             })}
             onClick={() => redirectToAlbum(title)}
@@ -69,7 +69,7 @@ export default function AllAlbumsTable() {
                     __html: searchQuery
                       ? title.replaceAll(
                           new RegExp(searchQuery, 'ig'),
-                          `<span style="background-color:yellow">$&</span>`,
+                          `<span style="text-decoration:underline">$&</span>`,
                         )
                       : title,
                   }}

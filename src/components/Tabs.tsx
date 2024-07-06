@@ -50,7 +50,7 @@ const Tabs = ({ tabs }: TabsProps) => {
                   'whitespace-nowrap border-b-2 px-1 py-4 text-sm font-medium',
                   {
                     'border-b-pink-500 text-pink-600': tab.current,
-                    'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700':
+                    'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-white dark:hover:text-gray-500':
                       !tab.current,
                   },
                 )}

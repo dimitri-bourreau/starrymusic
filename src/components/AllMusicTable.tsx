@@ -67,7 +67,9 @@ export default function AllMusicTable() {
             <tr
               key={`${title}:${album}`}
               className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
-                'bg-pink-200': decodedPathName.includes(`/${title}/`),
+                'bg-pink-200 dark:bg-pink-800': decodedPathName.includes(
+                  `/${title}/`,
+                ),
                 'hover:bg-pink-600/10': !decodedPathName.includes(`/${title}/`),
               })}
               onClick={() => redirectToTitle(title)}
@@ -80,7 +82,7 @@ export default function AllMusicTable() {
                       __html: searchQuery
                         ? title.replaceAll(
                             new RegExp(searchQuery, 'ig'),
-                            `<span style="background-color:yellow">$&</span>`,
+                            `<span style="text-decoration:underline">$&</span>`,
                           ) + languageExtension
                         : title + languageExtension,
                     }}

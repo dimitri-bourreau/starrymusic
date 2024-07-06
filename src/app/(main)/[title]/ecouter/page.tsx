@@ -22,7 +22,7 @@ export default function Page({ params }: PageProps) {
     if (!href)
       return <p className="italic text-gray-500">Pas encore répertorié ❤️</p>
     return (
-      <Link href={href} className="text-pink-600">
+      <Link href={href} className="text-pink-600 dark:text-pink-500">
         {href}
       </Link>
     )
@@ -31,25 +31,31 @@ export default function Page({ params }: PageProps) {
   return (
     <dl className="divide-y divide-gray-100">
       <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900">YouTube</dt>
+        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
+          YouTube
+        </dt>
         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
           <MediaLink href={youTube} />
         </dd>
       </div>
       <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900">Spotify</dt>
+        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
+          Spotify
+        </dt>
         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
           <MediaLink href={spotify} />
         </dd>
       </div>
       <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900">Deezer</dt>
+        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
+          Deezer
+        </dt>
         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
           <MediaLink href={deezer} />
         </dd>
       </div>
       <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900">
+        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
           Apple Music
         </dt>
         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
@@ -57,7 +63,7 @@ export default function Page({ params }: PageProps) {
         </dd>
       </div>
       <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900">
+        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
           Bandcamp
         </dt>
         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
