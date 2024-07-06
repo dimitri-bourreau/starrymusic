@@ -55,18 +55,18 @@ export default function MusicLayout({ children, params }: MusicLayoutProps) {
       ) : (
         <>
           <div className="flex gap-4 px-4 py-5 sm:p-6">
-            <div className="w-1/3">
+            <div>
               <Image
                 src={
                   associatedAlbum?.image || '/albums/default-album-cover.jpg'
                 }
                 className="rounded"
                 alt="Album cover"
-                width={400}
-                height={400}
+                width={250}
+                height={250}
               />
             </div>
-            <div className="flex w-2/3 flex-col justify-center">
+            <div className="flex flex-col justify-center">
               <h1 className="px-4 text-2xl font-semibold leading-7 text-slate-700 sm:px-6 lg:px-8 dark:text-white">
                 {title}
               </h1>
