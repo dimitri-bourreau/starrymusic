@@ -69,20 +69,20 @@ export default function AllMusicTable() {
                   width={40}
                   height={40}
                 />
-                <div className="truncate text-sm font-medium leading-6 text-gray-400">
+                <div className="truncate text-sm font-medium leading-6 text-gray-500">
                   {album}
                 </div>
               </div>
             </td>
             <td className="hidden py-4 pl-0 pr-4 text-sm leading-6 sm:table-cell sm:pr-8 lg:pr-20">
-              <div className="flex items-center justify-end gap-x-2 text-gray-400 sm:justify-start">
+              <div className="flex items-center justify-end gap-x-2 text-gray-500 sm:justify-start">
                 {year.toString()}
               </div>
             </td>
-            <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-400 md:table-cell lg:pr-20">
+            <td className="hidden py-4 pl-0 pr-8 text-sm leading-6 text-gray-500 md:table-cell lg:pr-20">
               {duration}
             </td>
-            <td className="py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-400 sm:pr-6 lg:pr-8">
+            <td className="py-4 pl-0 pr-4 text-right text-sm leading-6 text-gray-500 sm:pr-6 lg:pr-8">
               <button
                 type="button"
                 className="rounded bg-pink-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
