@@ -33,6 +33,14 @@ export default function AllAlbumsTable() {
     router.push(url)
   }
 
+  if (albumsToDisplay.length === 0) {
+    return (
+      <p className="p-4 text-gray-500">
+        Aucun album ne correspond à votre recherche
+      </p>
+    )
+  }
+
   return (
     <table className="w-full text-left">
       <thead className="border-b border-white/10 text-sm leading-6 text-slate-700 dark:text-white">
@@ -44,38 +52,32 @@ export default function AllAlbumsTable() {
       </thead>
 
       <tbody>
-        {albumsToDisplay.length === 0 ? (
-          <p className="p-4 text-gray-500">
-            Aucun album ne correspond à votre recherche
-          </p>
-        ) : (
-          albumsToDisplay.map(({ title, image }) => (
-            <tr
-              key={`${title}:${image}`}
-              className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
-                'bg-pink-200': decodedPathName.includes(title),
-                'hover:bg-pink-600/10': !decodedPathName.includes(title),
-              })}
-              onClick={() => redirectToAlbum(title)}
-            >
-              <td className="py-2">
-                <div className="flex gap-x-3">
-                  <p
-                    className="px-4 font-mono text-sm leading-6 text-slate-700 dark:text-white"
-                    dangerouslySetInnerHTML={{
-                      __html: searchQuery
-                        ? title.replaceAll(
-                            new RegExp(searchQuery, 'ig'),
-                            `<span style="background-color:yellow">$&</span>`,
-                          )
-                        : title,
-                    }}
-                  />
-                </div>
-              </td>
-            </tr>
-          ))
-        )}
+        {albumsToDisplay.map(({ title, image }) => (
+          <tr
+            key={`${title}:${image}`}
+            className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
+              'bg-pink-200': decodedPathName.includes(title),
+              'hover:bg-pink-600/10': !decodedPathName.includes(title),
+            })}
+            onClick={() => redirectToAlbum(title)}
+          >
+            <td className="py-2">
+              <div className="flex gap-x-3">
+                <p
+                  className="px-4 font-mono text-sm leading-6 text-slate-700 dark:text-white"
+                  dangerouslySetInnerHTML={{
+                    __html: searchQuery
+                      ? title.replaceAll(
+                          new RegExp(searchQuery, 'ig'),
+                          `<span style="background-color:yellow">$&</span>`,
+                        )
+                      : title,
+                  }}
+                />
+              </div>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   )
