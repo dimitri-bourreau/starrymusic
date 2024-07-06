@@ -4,6 +4,7 @@ import posterImage from '@/images/poster.jpg'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
+import AllAlbumsTable from '@/components/AllAlbumsTable'
 
 const SideNavigation = () => {
   const pathName = usePathname()
@@ -39,6 +40,13 @@ const SideNavigation = () => {
         Site réalisé par des fans de Starrysky pour regrouper leurs musiques
         avec leurs paroles. 👋
       </p>
+
+      <div className="max-h-1/3 sm:max-h-auto overflow-auto sm:overflow-hidden">
+        <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
+          Albums
+        </h2>
+        <AllAlbumsTable />
+      </div>
 
       <div className="max-h-1/3 sm:max-h-auto overflow-auto sm:overflow-hidden">
         <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">

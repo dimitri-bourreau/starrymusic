@@ -1,21 +1,18 @@
-import getAllMusic from '@/starrysky-music/features/get-all-music'
 import { usePathname, useRouter } from 'next/navigation'
 import clsx from 'clsx'
+import getAllAlbums from '@/starrysky-music/features/get-all-albums'
 
-export default function AllMusicTable() {
+export default function AllAlbumsTable() {
   const router = useRouter()
   const pathName = usePathname()
   const decodedPathName = decodeURIComponent(pathName)
 
-  const songs = getAllMusic().sort((a, b) => {
+  const albums = getAllAlbums().sort((a, b) => {
     return a.title < b.title ? -1 : 1
   })
 
-  const redirectToTitle = (title: string) => {
-    let url = encodeURI(`/${title}`)
-    if (pathName.endsWith('paroles')) url += '/paroles'
-    if (pathName.endsWith('details')) url += '/details'
-    if (pathName.endsWith('ecouter')) url += '/ecouter'
+  const redirectToAlbum = (title: string) => {
+    const url = encodeURI(`/albums/${title}`)
     router.push(url)
   }
 
@@ -30,14 +27,14 @@ export default function AllMusicTable() {
       </thead>
 
       <tbody>
-        {songs.map(({ title, album }) => (
+        {albums.map(({ title, image, year }) => (
           <tr
-            key={`${title}:${album}`}
+            key={`${title}:${image}`}
             className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
-              'bg-pink-200': decodedPathName.includes(`/${title}/`),
-              'hover:bg-pink-600/10': !decodedPathName.includes(`/${title}/`),
+              'bg-pink-200': decodedPathName.includes(title),
+              'hover:bg-pink-600/10': !decodedPathName.includes(title),
             })}
-            onClick={() => redirectToTitle(title)}
+            onClick={() => redirectToAlbum(title)}
           >
             <td className="py-2">
               <div className="flex gap-x-3">
