@@ -12,7 +12,6 @@ export default function Page({ params }: PageProps) {
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('search')
 
-  const music = getMusic(decodeURIComponent(params.title))
   let url = `/${params.title}/paroles`
   if (searchQuery) url += `?${searchParams.toString()}`
   permanentRedirect(url)
