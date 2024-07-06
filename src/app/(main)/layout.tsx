@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { Waveform } from '@/components/Waveform'
 import posterImage from '@/images/poster.jpg'
 import ExternalLinks from '@/components/ExternalLinks'
-import InternalLinks from '@/components/InternalLinks'
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   const hosts = ['Tai', 'Sasha', 'Yuki', 'Logan', 'Neku']
@@ -54,8 +53,6 @@ export default function MainLayout({ children }: { children: ReactNode }) {
               musiques avec leurs paroles.
             </p>
           </div>
-
-          <InternalLinks />
 
           <ExternalLinks className="hidden lg:block" />
         </div>
