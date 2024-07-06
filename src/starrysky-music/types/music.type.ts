@@ -10,4 +10,13 @@ export default interface Music {
     extra: string[] | null
   } | null
   lyrics: string[][] | null
+  links: {
+    youTube: string | null
+    deezer: string | null
+    spotify: string | null
+    appleMusic: string | null
+    bandCamp: string | null
+    other: string[] | null
+  }
+  languageVariant: 'FR' | 'EN' | null
 }
