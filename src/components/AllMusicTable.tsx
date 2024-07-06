@@ -21,7 +21,7 @@ export default function AllMusicTable() {
       setMusicToDisplay(songs)
     } else {
       const filteredMusic = songs.filter(({ title }) =>
-        title.includes(searchQuery),
+        title.toLowerCase().includes(searchQuery.toLowerCase()),
       )
       setMusicToDisplay(filteredMusic)
     }
@@ -64,8 +64,8 @@ export default function AllMusicTable() {
                     dangerouslySetInnerHTML={{
                       __html: searchQuery
                         ? title.replaceAll(
-                            searchQuery,
-                            `<span style="background-color:yellow">${searchQuery}</span>`,
+                            new RegExp(searchQuery, 'ig'),
+                            `<span style="background-color:yellow">$&</span>`,
                           )
                         : title,
                     }}
