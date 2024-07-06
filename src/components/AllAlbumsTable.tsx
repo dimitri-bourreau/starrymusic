@@ -1,10 +1,11 @@
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
 import getAllAlbums from '@/starrysky-music/features/get-all-albums'
 
 export default function AllAlbumsTable() {
   const router = useRouter()
   const pathName = usePathname()
+  const searchParams = useSearchParams()
   const decodedPathName = decodeURIComponent(pathName)
 
   const albums = getAllAlbums().sort((a, b) => {
@@ -12,7 +13,9 @@ export default function AllAlbumsTable() {
   })
 
   const redirectToAlbum = (title: string) => {
-    const url = encodeURI(`/albums/${title}`)
+    const searchQuery = searchParams.get('search')
+    let url = encodeURI(`/albums/${title}`)
+    if (searchQuery) url += `?${searchParams.toString()}`
     router.push(url)
   }
 

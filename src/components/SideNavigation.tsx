@@ -2,12 +2,28 @@ import AllMusicTable from '@/components/AllMusicTable'
 import Image from 'next/image'
 import posterImage from '@/images/poster.jpg'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
 import AllAlbumsTable from '@/components/AllAlbumsTable'
+import { ChangeEvent } from 'react'
 
 const SideNavigation = () => {
+  const router = useRouter()
   const pathName = usePathname()
+  const searchParams = useSearchParams()
+  const searchQuery = searchParams.get('search')
+  const homeUrl = `/${searchQuery ? `?${searchParams.toString()}` : ''}`
+
+  const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const searchValue = event.target.value
+    if (!searchValue) {
+      router.push(pathName)
+    } else {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set('search', searchValue)
+      router.push(`${pathName}?${params}`)
+    }
+  }
 
   return (
     <div
@@ -20,7 +36,7 @@ const SideNavigation = () => {
     >
       <div className="mx-auto flex items-center gap-4 sm:mx-0">
         <Link
-          href="/"
+          href={homeUrl}
           className="overflow-hidden rounded-lg bg-slate-200 shadow-xl shadow-slate-200 sm:rounded-xl lg:rounded-2xl dark:shadow-slate-800"
           aria-label="Homepage"
         >
@@ -33,7 +49,7 @@ const SideNavigation = () => {
           />
         </Link>
         <p className="text-xl font-bold text-slate-900 dark:text-slate-400">
-          <Link href="/">starrymusic.fr</Link>
+          <Link href={homeUrl}>starrymusic.fr</Link>
         </p>
       </div>
       <p className="mt-3 text-center font-medium leading-8 text-slate-700 sm:hidden dark:text-zinc-300">
@@ -61,6 +77,8 @@ const SideNavigation = () => {
           name="search"
           type="search"
           placeholder="Rechercher..."
+          onChange={handleSearchInputChange}
+          value={searchQuery || undefined}
           className="block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
         />
       </div>

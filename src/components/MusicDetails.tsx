@@ -1,7 +1,7 @@
 'use client'
 
 import Music from '@/starrysky-music/types/music.type'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 interface MusicDetailsProps {
   musicData: Music
@@ -9,9 +9,12 @@ interface MusicDetailsProps {
 
 const MusicDetails = ({ musicData }: MusicDetailsProps) => {
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   const redirectToAlbum = (title: string) => {
-    const url = encodeURI(`/albums/${title}`)
+    const searchQuery = searchParams.get('search')
+    let url = encodeURI(`/albums/${title}`)
+    if (searchQuery) url += `?${searchParams.toString()}`
     router.push(url)
   }
 

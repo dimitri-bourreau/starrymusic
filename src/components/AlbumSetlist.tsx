@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Album from '@/starrysky-music/types/album.type'
 import getAlbumSetlist from '@/starrysky-music/features/get-album-setlist'
 
@@ -10,10 +10,13 @@ interface AlbumSetlistProps {
 
 export default function AlbumSetlist({ album }: AlbumSetlistProps) {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const setlist = getAlbumSetlist(album.title)
 
   const redirectToMusic = (title: string) => {
-    const url = encodeURI(`/${title}`)
+    const searchQuery = searchParams.get('search')
+    let url = encodeURI(`/${title}`)
+    if (searchQuery) url += `?${searchParams.toString()}`
     router.push(url)
   }
 

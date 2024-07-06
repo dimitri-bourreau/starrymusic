@@ -1,10 +1,11 @@
 import getAllMusic from '@/starrysky-music/features/get-all-music'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
 
 export default function AllMusicTable() {
   const router = useRouter()
   const pathName = usePathname()
+  const searchParams = useSearchParams()
   const decodedPathName = decodeURIComponent(pathName)
 
   const songs = getAllMusic().sort((a, b) => {
@@ -12,10 +13,12 @@ export default function AllMusicTable() {
   })
 
   const redirectToTitle = (title: string) => {
+    const searchQuery = searchParams.get('search')
     let url = encodeURI(`/${title}`)
     if (pathName.endsWith('paroles')) url += '/paroles'
-    if (pathName.endsWith('details')) url += '/details'
-    if (pathName.endsWith('ecouter')) url += '/ecouter'
+    else if (pathName.endsWith('details')) url += '/details'
+    else if (pathName.endsWith('ecouter')) url += '/ecouter'
+    if (searchQuery) url += `?${searchParams.toString()}`
     router.push(url)
   }
 
