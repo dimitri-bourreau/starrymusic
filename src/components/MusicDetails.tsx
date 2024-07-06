@@ -33,12 +33,33 @@ const MusicDetails = ({ musicData }: MusicDetailsProps) => {
           {musicData.duration}
         </dd>
       </div>
-      <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900">Crédits</dt>
-        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          {musicData.title}
-        </dd>
-      </div>
+      {musicData.credits && (
+        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt className="text-sm font-medium leading-6 text-gray-900">
+            Crédits
+          </dt>
+          <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            <ul>
+              {musicData.credits.music && (
+                <li>Musique : {musicData.credits.music}</li>
+              )}
+              {musicData.credits.lyrics && (
+                <li>Paroles : {musicData.credits.lyrics}</li>
+              )}
+              {musicData.credits['lead-vocals'] && (
+                <li>Voix principale : {musicData.credits['lead-vocals']}</li>
+              )}
+              {musicData.credits.extra && (
+                <li>
+                  {musicData.credits.extra.map((credit) => (
+                    <p key={credit}>{credit}</p>
+                  ))}
+                </li>
+              )}
+            </ul>
+          </dd>
+        </div>
+      )}
     </dl>
   )
 }
