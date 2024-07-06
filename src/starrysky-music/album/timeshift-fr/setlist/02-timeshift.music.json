@@ -13,5 +13,14 @@
     [
       "Ne lâche pas ma main, sans moi tu n'es rien"
     ]
-  ]
+  ],
+  "links": {
+    "youTube": null,
+    "deezer": null,
+    "spotify": null,
+    "appleMusic": null,
+    "bandCamp": null,
+    "other": null
+  },
+  "languageVariant": "FR"
 }

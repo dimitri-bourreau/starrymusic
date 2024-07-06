@@ -11,5 +11,14 @@
       "Avec Capsule (adaptation française) par Ymonrah, Joachim Woerly-Moussier, Kiwie, Sachiko & Arthur Raulin"
     ]
   },
-  "lyrics": null
+  "lyrics": null,
+  "links": {
+    "youTube": null,
+    "deezer": null,
+    "spotify": null,
+    "appleMusic": null,
+    "bandCamp": null,
+    "other": null
+  },
+  "languageVariant": "FR"
 }

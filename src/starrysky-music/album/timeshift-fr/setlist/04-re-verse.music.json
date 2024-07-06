@@ -32,5 +32,14 @@
       "Un coeur blessé fut entaché",
       "Oui je vais partir changer ton sort"
     ]
-  ]
+  ],
+  "links": {
+    "youTube": null,
+    "deezer": null,
+    "spotify": null,
+    "appleMusic": null,
+    "bandCamp": null,
+    "other": null
+  },
+  "languageVariant": "FR"
 }

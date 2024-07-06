@@ -19,7 +19,8 @@ export default function Page({ params }: PageProps) {
   const { youTube, appleMusic, bandCamp, deezer, spotify } = music.links
 
   const MediaLink = ({ href }: { href: string | null }) => {
-    if (!href) return ''
+    if (!href)
+      return <p className="italic text-gray-500">Pas encore répertorié ❤️</p>
     return (
       <Link href={href} className="text-pink-600">
         {href}
