@@ -27,7 +27,7 @@ export default function AllAlbumsTable() {
       </thead>
 
       <tbody>
-        {albums.map(({ title, image, year }) => (
+        {albums.map(({ title, image }) => (
           <tr
             key={`${title}:${image}`}
             className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
