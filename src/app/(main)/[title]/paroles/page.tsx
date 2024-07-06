@@ -22,5 +22,17 @@ export default function Page({ params }: PageProps) {
       </p>
     )
 
-  return <p>OK</p>
+  return (
+    <div className="flex flex-col gap-4 p-4 px-10">
+      {music.lyrics.map((chapter, chapterIndex) => {
+        return (
+          <div key={chapterIndex}>
+            {chapter.map((line, lineIndex) => (
+              <p key={`${chapterIndex}${lineIndex}`}>{line}</p>
+            ))}
+          </div>
+        )
+      })}
+    </div>
+  )
 }
