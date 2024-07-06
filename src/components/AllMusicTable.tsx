@@ -47,34 +47,32 @@ export default function AllMusicTable() {
       </thead>
 
       <tbody>
-        {musicToDisplay.map(({ title, album }) => {
-          return (
-            <tr
-              key={`${title}:${album}`}
-              className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
-                'bg-pink-200': decodedPathName.includes(`/${title}/`),
-                'hover:bg-pink-600/10': !decodedPathName.includes(`/${title}/`),
-              })}
-              onClick={() => redirectToTitle(title)}
-            >
-              <td className="py-2">
-                <div className="flex gap-x-3">
-                  <p
-                    className="px-4 font-mono text-sm leading-6 text-slate-700 dark:text-white"
-                    dangerouslySetInnerHTML={{
-                      __html: searchQuery
-                        ? title.replaceAll(
-                            new RegExp(searchQuery, 'ig'),
-                            `<span style="background-color:yellow">$&</span>`,
-                          )
-                        : title,
-                    }}
-                  />
-                </div>
-              </td>
-            </tr>
-          )
-        })}
+        {musicToDisplay.map(({ title, album }) => (
+          <tr
+            key={`${title}:${album}`}
+            className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
+              'bg-pink-200': decodedPathName.includes(`/${title}/`),
+              'hover:bg-pink-600/10': !decodedPathName.includes(`/${title}/`),
+            })}
+            onClick={() => redirectToTitle(title)}
+          >
+            <td className="py-2">
+              <div className="flex gap-x-3">
+                <p
+                  className="px-4 font-mono text-sm leading-6 text-slate-700 dark:text-white"
+                  dangerouslySetInnerHTML={{
+                    __html: searchQuery
+                      ? title.replaceAll(
+                          new RegExp(searchQuery, 'ig'),
+                          `<span style="background-color:yellow">$&</span>`,
+                        )
+                      : title,
+                  }}
+                />
+              </div>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   )

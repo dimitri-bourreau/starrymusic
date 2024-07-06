@@ -1,19 +1,33 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
 import getAllAlbums from '@/starrysky-music/features/get-all-albums'
+import { useEffect, useState } from 'react'
 
 export default function AllAlbumsTable() {
   const router = useRouter()
   const pathName = usePathname()
   const searchParams = useSearchParams()
+  const searchQuery = searchParams.get('search')
   const decodedPathName = decodeURIComponent(pathName)
 
   const albums = getAllAlbums().sort((a, b) => {
     return a.title < b.title ? -1 : 1
   })
 
+  const [albumsToDisplay, setAlbumsToDisplay] = useState(albums)
+
+  useEffect(() => {
+    if (!searchQuery) {
+      setAlbumsToDisplay(albums)
+    } else {
+      const filteredMusic = albums.filter(({ title }) =>
+        title.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+      setAlbumsToDisplay(filteredMusic)
+    }
+  }, [searchQuery])
+
   const redirectToAlbum = (title: string) => {
-    const searchQuery = searchParams.get('search')
     let url = encodeURI(`/albums/${title}`)
     if (searchQuery) url += `?${searchParams.toString()}`
     router.push(url)
@@ -41,9 +55,17 @@ export default function AllAlbumsTable() {
           >
             <td className="py-2">
               <div className="flex gap-x-3">
-                <p className="px-4 font-mono text-sm leading-6 text-slate-700 dark:text-white">
-                  {title}
-                </p>
+                <p
+                  className="px-4 font-mono text-sm leading-6 text-slate-700 dark:text-white"
+                  dangerouslySetInnerHTML={{
+                    __html: searchQuery
+                      ? title.replaceAll(
+                          new RegExp(searchQuery, 'ig'),
+                          `<span style="background-color:yellow">$&</span>`,
+                        )
+                      : title,
+                  }}
+                />
               </div>
             </td>
           </tr>
