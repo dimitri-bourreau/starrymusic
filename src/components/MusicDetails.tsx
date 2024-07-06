@@ -1,12 +1,20 @@
 'use client'
 
 import Music from '@/starrysky-music/types/music.type'
+import { useRouter } from 'next/navigation'
 
 interface MusicDetailsProps {
   musicData: Music
 }
 
 const MusicDetails = ({ musicData }: MusicDetailsProps) => {
+  const router = useRouter()
+
+  const redirectToAlbum = (title: string) => {
+    const url = encodeURI(`/albums/${title}`)
+    router.push(url)
+  }
+
   return (
     <dl className="divide-y divide-gray-100">
       <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -15,9 +23,12 @@ const MusicDetails = ({ musicData }: MusicDetailsProps) => {
           {musicData.title}
         </dd>
       </div>
-      <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <div
+        className="cursor-pointer px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
+        onClick={() => redirectToAlbum(musicData.album)}
+      >
         <dt className="text-sm font-medium leading-6 text-gray-900">Album</dt>
-        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+        <dd className="mt-1 text-sm leading-6 text-pink-700 sm:col-span-2 sm:mt-0">
           {musicData.album}
         </dd>
       </div>
