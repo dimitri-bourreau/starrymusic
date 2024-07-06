@@ -16,6 +16,10 @@ const SideNavigation = () => {
 
   const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchValue = event.target.value
+    if (searchValue.toLowerCase() === 'caca') {
+      const confirmation = confirm('Heu, on continue ou tu annule ?')
+      if (confirmation) router.push('/caca')
+    }
     if (!searchValue) {
       router.push(pathName)
     } else {
