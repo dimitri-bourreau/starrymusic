@@ -1,9 +1,11 @@
 import getAllMusic from '@/starrysky-music/features/get-all-music'
 import { usePathname, useRouter } from 'next/navigation'
+import clsx from 'clsx'
 
 export default function AllMusicTable() {
   const router = useRouter()
   const pathName = usePathname()
+  const decodedPathName = decodeURIComponent(pathName)
 
   const songs = getAllMusic().sort((a, b) => {
     return a.title < b.title ? -1 : 1
@@ -31,12 +33,15 @@ export default function AllMusicTable() {
         {songs.map(({ title, album }) => (
           <tr
             key={`${title}:${album}`}
-            className="cursor-pointer hover:bg-pink-600/10 dark:hover:bg-pink-600/50"
+            className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
+              'bg-pink-200': decodedPathName.includes(title),
+              'hover:bg-pink-600/10': !decodedPathName.includes(title),
+            })}
             onClick={() => redirectToTitle(title)}
           >
             <td className="py-2">
               <div className="flex gap-x-3">
-                <div className="font-mono text-sm leading-6 text-slate-700 dark:text-white">
+                <div className="px-4 font-mono text-sm leading-6 text-slate-700 dark:text-white">
                   {title}
                 </div>
               </div>
