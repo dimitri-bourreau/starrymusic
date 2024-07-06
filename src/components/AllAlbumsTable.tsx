@@ -34,7 +34,7 @@ export default function AllAlbumsTable() {
   }
 
   return (
-    <table className="text-left">
+    <table className="w-full text-left">
       <thead className="border-b border-white/10 text-sm leading-6 text-slate-700 dark:text-white">
         <tr>
           <th scope="col" className="hidden p-4 font-semibold">
