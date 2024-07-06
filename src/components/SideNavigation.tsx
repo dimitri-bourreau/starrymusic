@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
 import AllAlbumsTable from '@/components/AllAlbumsTable'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, useEffect } from 'react'
 
 const SideNavigation = () => {
   const router = useRouter()
@@ -18,10 +18,6 @@ const SideNavigation = () => {
 
   const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchValue = event.target.value
-    if (searchValue.toLowerCase() === 'caca') {
-      const confirmation = confirm('Heu, on continue ou tu annule ?')
-      if (confirmation) router.push('/caca')
-    }
     if (!searchValue) {
       router.push(pathName)
     } else {
@@ -30,6 +26,13 @@ const SideNavigation = () => {
       router.push(`${pathName}?${params}`)
     }
   }
+
+  useEffect(() => {
+    if (searchQuery?.toLowerCase() === 'caca') {
+      const confirmation = confirm('Heu, on continue ou tu annule ?')
+      if (confirmation) router.push('/caca')
+    }
+  }, [searchQuery])
 
   return (
     <div
