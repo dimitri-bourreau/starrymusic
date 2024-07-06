@@ -18,5 +18,5 @@ export default interface Music {
     bandCamp: string | null
     other: string[] | null
   }
-  languageVariant: 'FR' | 'EN' | null
+  languageVariant: string | null
 }
