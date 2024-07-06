@@ -1,19 +1,33 @@
 import getAllMusic from '@/starrysky-music/features/get-all-music'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
+import { useEffect, useState } from 'react'
 
 export default function AllMusicTable() {
   const router = useRouter()
   const pathName = usePathname()
-  const searchParams = useSearchParams()
   const decodedPathName = decodeURIComponent(pathName)
+  const searchParams = useSearchParams()
+  const searchQuery = searchParams.get('search')
 
   const songs = getAllMusic().sort((a, b) => {
     return a.title < b.title ? -1 : 1
   })
 
+  const [musicToDisplay, setMusicToDisplay] = useState(songs)
+
+  useEffect(() => {
+    if (!searchQuery) {
+      setMusicToDisplay(songs)
+    } else {
+      const filteredMusic = songs.filter(({ title }) =>
+        title.includes(searchQuery),
+      )
+      setMusicToDisplay(filteredMusic)
+    }
+  }, [searchQuery])
+
   const redirectToTitle = (title: string) => {
-    const searchQuery = searchParams.get('search')
     let url = encodeURI(`/${title}`)
     if (pathName.endsWith('paroles')) url += '/paroles'
     else if (pathName.endsWith('details')) url += '/details'
@@ -33,7 +47,7 @@ export default function AllMusicTable() {
       </thead>
 
       <tbody>
-        {songs.map(({ title, album }) => (
+        {musicToDisplay.map(({ title, album }) => (
           <tr
             key={`${title}:${album}`}
             className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {

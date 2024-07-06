@@ -2,7 +2,6 @@
 
 import Music from '@/starrysky-music/types/music.type'
 import { permanentRedirect, useSearchParams } from 'next/navigation'
-import getMusic from '@/starrysky-music/features/get-music'
 
 interface PageProps {
   params: { title: Music['title'] }
