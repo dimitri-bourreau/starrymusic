@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { ReactNode, Suspense } from 'react'
 
 import { Waveform } from '@/components/Waveform'
 import SideNavigation from '@/components/SideNavigation'
@@ -12,7 +12,9 @@ export default function MainLayout({ children }: { children: ReactNode }) {
   return (
     <main className="flex flex-col sm:flex-row">
       <div className="w-full sm:w-1/4">
-        <SideNavigation />
+        <Suspense>
+          <SideNavigation />
+        </Suspense>
       </div>
 
       <div className="relative hidden w-3/4 sm:block">

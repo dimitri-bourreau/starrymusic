@@ -3,6 +3,7 @@ import getAllAlbumsTitle from '@/starrysky-music/features/get-all-albums-title'
 import getAlbum from '@/starrysky-music/features/get-album'
 import Image from 'next/image'
 import AlbumSetlist from '@/components/AlbumSetlist'
+import { Suspense } from 'react'
 
 export function generateStaticParams() {
   const titles = getAllAlbumsTitle()
@@ -44,7 +45,9 @@ export default function Page({ params }: PageProps) {
               <p className="px-4 text-gray-500 sm:px-6 lg:px-8">{album.year}</p>
             </div>
           </div>
-          <AlbumSetlist album={album} />
+          <Suspense>
+            <AlbumSetlist album={album} />
+          </Suspense>
         </>
       )}
     </div>
