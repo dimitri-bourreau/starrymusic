@@ -8,7 +8,12 @@ interface PageProps {
 export default function Page({ params }: PageProps) {
   const music = getMusic(decodeURIComponent(params.title))
 
-  if (!music) return <p>Aucun détail enregistré pour l&apos;instant. 🙏</p>
+  if (!music)
+    return (
+      <p className="ml-4 mt-10">
+        Aucun détail enregistré pour l&apos;instant. 🙏
+      </p>
+    )
 
   return <MusicDetails musicData={music} />
 }
