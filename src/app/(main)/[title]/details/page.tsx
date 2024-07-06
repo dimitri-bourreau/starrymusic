@@ -6,7 +6,7 @@ interface PageProps {
 }
 
 export default function Page({ params }: PageProps) {
-  const music = getMusic(params.title)
+  const music = getMusic(decodeURIComponent(params.title))
 
   if (!music) return <p>Aucun détail enregistré pour l&apos;instant. 🙏</p>
 
