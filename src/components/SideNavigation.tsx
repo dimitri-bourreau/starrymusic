@@ -40,7 +40,14 @@ const SideNavigation = () => {
         avec leurs paroles. 👋
       </p>
 
-      <div className="relative flex items-center">
+      <div className="max-h-1/3 sm:max-h-auto overflow-auto sm:overflow-hidden">
+        <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
+          Musiques
+        </h2>
+        <AllMusicTable />
+      </div>
+
+      <div className="relative mt-auto flex items-center">
         <input
           id="search"
           name="search"
@@ -48,13 +55,6 @@ const SideNavigation = () => {
           placeholder="Rechercher..."
           className="block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
         />
-      </div>
-
-      <div className="max-h-1/3 sm:max-h-auto overflow-auto sm:overflow-hidden">
-        <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
-          Musiques
-        </h2>
-        <AllMusicTable />
       </div>
     </div>
   )
