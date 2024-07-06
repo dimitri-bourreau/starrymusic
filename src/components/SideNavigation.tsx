@@ -1,3 +1,5 @@
+'use client'
+
 import AllMusicTable from '@/components/AllMusicTable'
 import Image from 'next/image'
 import posterImage from '@/images/poster.jpg'
