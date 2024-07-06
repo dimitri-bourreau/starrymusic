@@ -29,6 +29,10 @@ export default function ExternalLinks() {
               'Playlists pour découvrir Starrysky',
               'https://linktr.ee/discover_starrysky',
             ],
+            [
+              'Wiki fandom dédié à Starrysky',
+              'https://starrysky.fandom.com/fr/wiki/Starrysky',
+            ],
           ] as const
         ).map(([label, link]) => (
           <li key={label} className="flex">
