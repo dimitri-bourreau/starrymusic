@@ -1,10 +1,9 @@
-import clsx from 'clsx'
 import { TinyWaveFormIcon } from '@/components/TinyWaveFormIcon'
 import Link from 'next/link'
 
-export default function ExternalLinks({ className }: { className?: string }) {
+export default function ExternalLinks() {
   return (
-    <section className={clsx('mt-10 lg:mt-12', className)}>
+    <section>
       <h2 className="sr-only flex items-center font-mono text-sm font-medium leading-7 text-slate-900 lg:not-sr-only dark:text-slate-400">
         <TinyWaveFormIcon
           colors={['fill-indigo-300', 'fill-blue-300']}
@@ -12,7 +11,9 @@ export default function ExternalLinks({ className }: { className?: string }) {
         />
         <span className="ml-2.5">Liens</span>
       </h2>
+
       <div className="h-px bg-gradient-to-r from-slate-200/0 via-slate-200 to-slate-200/0 lg:hidden" />
+
       <ul
         role="list"
         className="mt-4 flex justify-center gap-10 text-base font-medium leading-7 text-slate-700 sm:gap-8 lg:flex-col lg:gap-4"
@@ -37,7 +38,7 @@ export default function ExternalLinks({ className }: { className?: string }) {
               className="group flex items-center"
               aria-label={label}
             >
-              <span className="hidden sm:block dark:text-zinc-300">
+              <span className="block hover:text-pink-500 dark:text-zinc-300">
                 {label}
               </span>
             </Link>
