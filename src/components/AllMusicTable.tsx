@@ -56,12 +56,9 @@ export default function AllMusicTable() {
 
       <tbody>
         {musicToDisplay.map(({ title, album, languageVariant }) => {
-          const languageExtension =
-            languageVariant === 'FR'
-              ? ' 🇫🇷'
-              : languageVariant === 'EN'
-                ? ' 🇬🇧'
-                : ''
+          const languageExtension = languageVariant
+            ? ` (${languageVariant})`
+            : null
 
           return (
             <tr
