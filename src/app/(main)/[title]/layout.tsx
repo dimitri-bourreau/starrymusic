@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 import getMusic from '@/starrysky-music/features/get-music'
 import Image from 'next/image'
 import Tabs from '@/components/Tabs'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import getAlbum from '@/starrysky-music/features/get-album'
 
 interface MusicLayoutProps {
@@ -15,7 +15,6 @@ interface MusicLayoutProps {
 }
 
 export default function MusicLayout({ children, params }: MusicLayoutProps) {
-  const router = useRouter()
   const pathName = usePathname()
   const title = decodeURIComponent(params.title)
 
@@ -40,10 +39,6 @@ export default function MusicLayout({ children, params }: MusicLayoutProps) {
       current: pathName.includes('ecouter'),
     },
   ]
-
-  const handleTabChange = (href: string) => {
-    router.push(href)
-  }
 
   return (
     <div className="px-4 py-10">
@@ -73,7 +68,7 @@ export default function MusicLayout({ children, params }: MusicLayoutProps) {
             </div>
           </div>
 
-          <Tabs tabs={tabs} onChange={handleTabChange} />
+          <Tabs tabs={tabs} />
 
           {children}
         </>
