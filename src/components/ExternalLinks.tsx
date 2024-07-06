@@ -29,7 +29,6 @@ export default function ExternalLinks() {
               'Playlists pour découvrir Starrysky',
               'https://linktr.ee/discover_starrysky',
             ],
-            ['Code source', 'https://github.com/dimitri-bourreau/starrymusic'],
           ] as const
         ).map(([label, link]) => (
           <li key={label} className="flex">
