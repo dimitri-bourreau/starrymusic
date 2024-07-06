@@ -1,6 +1,7 @@
 import getAllMusicTitles from '@/starrysky-music/features/get-all-music-titles'
 import Music from '@/starrysky-music/types/music.type'
 import { permanentRedirect } from 'next/navigation'
+import getMusic from '@/starrysky-music/features/get-music'
 
 export function generateStaticParams() {
   const titles = getAllMusicTitles()
@@ -14,5 +15,9 @@ interface PageProps {
 }
 
 export default function Page({ params }: PageProps) {
-  permanentRedirect(`/${params.title}/paroles`)
+  const music = getMusic(decodeURIComponent(params.title))
+  const url = music?.lyrics
+    ? `/${params.title}/paroles`
+    : `/${params.title}/details`
+  permanentRedirect(url)
 }
