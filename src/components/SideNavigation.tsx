@@ -2,11 +2,22 @@ import AllMusicTable from '@/components/AllMusicTable'
 import Image from 'next/image'
 import posterImage from '@/images/poster.jpg'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import clsx from 'clsx'
 
 const SideNavigation = () => {
+  const pathName = usePathname()
+
   return (
-    <div className="flex flex-col gap-10 bg-slate-50 px-4 py-10 lg:min-h-screen lg:border-x lg:border-slate-200 dark:border-slate-800 dark:bg-black">
-      <div className="flex items-center gap-4">
+    <div
+      className={clsx(
+        'flex flex-col gap-4 bg-slate-50 px-4 py-10 sm:min-h-screen sm:gap-10 lg:border-x lg:border-slate-200 dark:border-slate-800 dark:bg-black',
+        {
+          'min-h-screen': pathName === '/',
+        },
+      )}
+    >
+      <div className="mx-auto flex items-center gap-4 sm:mx-0">
         <Link
           href="/"
           className="overflow-hidden rounded-lg bg-slate-200 shadow-xl shadow-slate-200 sm:rounded-xl lg:rounded-2xl dark:shadow-slate-800"
@@ -24,6 +35,10 @@ const SideNavigation = () => {
           <Link href="/">starrymusic.fr</Link>
         </p>
       </div>
+      <p className="mt-3 text-center font-medium leading-8 text-slate-700 sm:hidden dark:text-zinc-300">
+        Site réalisé par des fans de Starrysky pour regrouper leurs musiques
+        avec leurs paroles. 👋
+      </p>
 
       <div className="relative flex items-center">
         <input
@@ -35,7 +50,7 @@ const SideNavigation = () => {
         />
       </div>
 
-      <div>
+      <div className="max-h-1/3 sm:max-h-auto overflow-auto sm:overflow-hidden">
         <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
           Musiques
         </h2>
