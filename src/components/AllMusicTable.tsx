@@ -1,14 +1,19 @@
 import getAllMusic from '@/starrysky-music/features/get-all-music'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function AllMusicTable() {
   const router = useRouter()
+  const pathName = usePathname()
+
   const songs = getAllMusic().sort((a, b) => {
     return a.title < b.title ? -1 : 1
   })
 
   const redirectToTitle = (title: string) => {
-    const url = encodeURI(`/${title}`)
+    let url = encodeURI(`/${title}`)
+    if (pathName.endsWith('paroles')) url += '/paroles'
+    if (pathName.endsWith('details')) url += '/details'
+    if (pathName.endsWith('ecouter')) url += '/ecouter'
     router.push(url)
   }
 
