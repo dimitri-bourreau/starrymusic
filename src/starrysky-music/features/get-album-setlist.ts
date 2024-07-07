@@ -4,12 +4,20 @@ import timeshift from '@/starrysky-music/album/timeshift-fr/setlist/02-timeshift
 import interlude1Timeshift from '@/starrysky-music/album/timeshift-fr/setlist/03-bis-interlude-1.music.json'
 import reverse from '@/starrysky-music/album/timeshift-fr/setlist/04-re-verse.music.json'
 import newMagicalGirl from '../album/timeshift-fr/setlist/05-new-magical-girl.json'
+import anOldColor from '../album/timeshift-fr/setlist/06-an-old-color.json'
 import Music from '@/starrysky-music/types/music.type'
 
 const getAlbumSetlist = (title: Album['title']): Music[] => {
   switch (title) {
     case "TIMESHIFT - L'album qui s'écoute à l'envers":
-      return [espille, timeshift, interlude1Timeshift, reverse, newMagicalGirl]
+      return [
+        espille,
+        timeshift,
+        interlude1Timeshift,
+        reverse,
+        newMagicalGirl,
+        anOldColor,
+      ]
     default:
       console.error(`Failed to get setlist for album named ${title}`)
       return []

@@ -1,0 +1,42 @@
+{
+  "title": "AN OLD COLOR",
+  "album": "TIMESHIFT - L'album qui s'écoute à l'envers",
+  "year": 2022,
+  "duration": "03:14",
+  "credits": {
+    "music": "Tai Wuang",
+    "lyrics": "Tai Wuang, Sasha Brown",
+    "lead-vocals": "Sasha Brown",
+    "extra": [
+      "Solo violon Quinton : Even Dew",
+      "Choeurs additionnels : Joachim Woaerly-Moussier"
+    ]
+  },
+  "lyrics": [
+    [
+      "Ne te justifie pas",
+      "Tu en as le droit",
+      "Tu peux compter sur toi",
+      "Tu en as le droit"
+    ],
+    [
+      "Les mots sont gardés et les âmes se séparent",
+      "Sans un geste, à qui peut-on en vouloir ?",
+      "Les mots sont gardés et les âmes se séparent",
+      "Sans un geste",
+      "Sans un geste"
+    ],
+    ["Ça n'a pas de sens sens sens", "Ça n'a pas de sens sens sens"],
+    ["Ne te justifie pas", "Tu en as le droit"],
+    ["Ça n'a pas de sens sens sens", "Ça n'a pas de sens sens sens"]
+  ],
+  "links": {
+    "youTube": null,
+    "deezer": null,
+    "spotify": null,
+    "appleMusic": null,
+    "bandCamp": null,
+    "other": null
+  },
+  "languageVariant": "FR"
+}
