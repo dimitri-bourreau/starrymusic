@@ -4,6 +4,7 @@ import getAlbum from '@/starrysky-music/features/get-album'
 import Image from 'next/image'
 import AlbumSetlist from '@/components/AlbumSetlist'
 import { Suspense } from 'react'
+import Link from 'next/link'
 
 export function generateStaticParams() {
   const titles = getAllAlbumsTitle()
@@ -18,6 +19,21 @@ interface PageProps {
 
 export default function Page({ params }: PageProps) {
   const album = getAlbum(decodeURIComponent(params.title))
+
+  const MediaLink = ({
+    href,
+    label,
+  }: {
+    href: string | null
+    label: string
+  }) => {
+    if (!href) return <></>
+    return (
+      <Link href={href} className="text-pink-600 dark:text-pink-500">
+        {label}
+      </Link>
+    )
+  }
 
   return (
     <div className="px-4 py-10">
@@ -38,11 +54,16 @@ export default function Page({ params }: PageProps) {
                 height={250}
               />
             </div>
-            <div className="flex flex-col justify-center">
-              <h1 className="px-4 text-2xl font-semibold leading-7 text-slate-700 sm:px-6 lg:px-8 dark:text-white">
+            <div className="flex flex-col justify-center px-4 sm:px-6 lg:px-8">
+              <h1 className="text-2xl font-semibold leading-7 text-slate-700 dark:text-white">
                 {album.title}
               </h1>
-              <p className="px-4 text-gray-500 sm:px-6 lg:px-8">{album.year}</p>
+              <p className="mb-4 text-gray-500">{album.year}</p>
+              <MediaLink href={album.links.youTube} label="YouTube" />
+              <MediaLink href={album.links.spotify} label="Spotify" />
+              <MediaLink href={album.links.deezer} label="Deezer" />
+              <MediaLink href={album.links.appleMusic} label="Apple Music" />
+              <MediaLink href={album.links.bandCamp} label="BandCamp" />
             </div>
           </div>
           <Suspense>
