@@ -4,7 +4,7 @@ import getAlbum from '@/starrysky-music/features/get-album'
 import Image from 'next/image'
 import AlbumSetlist from '@/components/AlbumSetlist'
 import { Suspense } from 'react'
-import Link from 'next/link'
+import MediaLinks from '@/components/MediaLinks'
 
 export function generateStaticParams() {
   const titles = getAllAlbumsTitle()
@@ -19,21 +19,6 @@ interface PageProps {
 
 export default function Page({ params }: PageProps) {
   const album = getAlbum(decodeURIComponent(params.title))
-
-  const MediaLink = ({
-    href,
-    label,
-  }: {
-    href: string | null
-    label: string
-  }) => {
-    if (!href) return <></>
-    return (
-      <Link href={href} className="text-pink-600 dark:text-pink-500">
-        {label}
-      </Link>
-    )
-  }
 
   return (
     <div className="px-4 py-10">
@@ -58,12 +43,32 @@ export default function Page({ params }: PageProps) {
               <h1 className="text-2xl font-semibold leading-7 text-slate-700 dark:text-white">
                 {album.title}
               </h1>
-              <p className="mb-4 text-gray-500">{album.year}</p>
-              <MediaLink href={album.links.youTube} label="YouTube" />
-              <MediaLink href={album.links.spotify} label="Spotify" />
-              <MediaLink href={album.links.deezer} label="Deezer" />
-              <MediaLink href={album.links.appleMusic} label="Apple Music" />
-              <MediaLink href={album.links.bandCamp} label="BandCamp" />
+              <p className="text-gray-500">{album.year}</p>
+              <MediaLinks
+                className="mt-4"
+                links={[
+                  {
+                    href: album.links.youTube,
+                    label: 'YouTube',
+                  },
+                  {
+                    href: album.links.spotify,
+                    label: 'Spotify',
+                  },
+                  {
+                    href: album.links.deezer,
+                    label: 'Deezer',
+                  },
+                  {
+                    href: album.links.appleMusic,
+                    label: 'Apple Music',
+                  },
+                  {
+                    href: album.links.bandCamp,
+                    label: 'BandCamp',
+                  },
+                ]}
+              />
             </div>
           </div>
           <Suspense>
