@@ -1,5 +1,13 @@
 {
   "title": "TIMESHIFT - L'album qui s'écoute à l'envers",
   "year": 2022,
-  "image": "/albums/timeshift-fr.jpg"
+  "image": "/albums/timeshift-fr.jpg",
+  "links": {
+    "youTube": "https://www.youtube.com/watch?v=qzH0_YLYagg",
+    "deezer": "https://deezer.page.link/9XhnUpi2k84mtLq2A",
+    "spotify": "https://open.spotify.com/intl-fr/album/6GmcP4fezA55pqcRUyrpWU",
+    "appleMusic": "https://music.apple.com/fr/album/timeshift-lalbum-qui-s%C3%A9coute-%C3%A0-lenvers/1629959680?l=en-GB",
+    "bandCamp": "https://starrysky.bandcamp.com/album/timeshift-lalbum-qui-s-coute-lenvers",
+    "other": null
+  }
 }
