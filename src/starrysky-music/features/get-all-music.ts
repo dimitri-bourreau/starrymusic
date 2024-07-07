@@ -4,6 +4,7 @@ import echoFromThePast from '../album/timeshift-fr/setlist/03-echo-from-the-past
 import reverse from '../album/timeshift-fr/setlist/04-re-verse.music.json'
 import newMagicalGirl from '../album/timeshift-fr/setlist/05-new-magical-girl.json'
 import anOldColor from '../album/timeshift-fr/setlist/06-an-old-color.json'
+import l from '../album/timeshift-fr/setlist/07-l.json'
 import Music from '@/starrysky-music/types/music.type'
 
 const getallMusic = (): Music[] => {
@@ -14,6 +15,7 @@ const getallMusic = (): Music[] => {
     reverse,
     newMagicalGirl,
     anOldColor,
+    l,
   ]
 }
 
