@@ -33,11 +33,6 @@ export default function MusicLayout({ children, params }: MusicLayoutProps) {
       href: `/${title}/details`,
       current: pathName.includes('details'),
     },
-    {
-      name: 'Écouter',
-      href: `/${title}/ecouter`,
-      current: pathName.includes('ecouter'),
-    },
   ]
 
   return (
