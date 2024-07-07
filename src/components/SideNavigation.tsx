@@ -37,7 +37,7 @@ const SideNavigation = () => {
   return (
     <div
       className={clsx(
-        'flex flex-col gap-4 bg-slate-50 px-4 py-10 sm:min-h-screen sm:gap-10 lg:border-x lg:border-slate-200 dark:border-slate-800 dark:bg-black',
+        'flex flex-col gap-4 bg-slate-50 px-4 py-10 sm:sticky sm:top-0 sm:min-h-screen sm:gap-10 lg:border-x lg:border-slate-200 dark:border-slate-800 dark:bg-black',
         {
           'min-h-screen': pathName === '/',
         },
