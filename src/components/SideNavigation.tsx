@@ -19,11 +19,11 @@ const SideNavigation = () => {
   const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchValue = event.target.value
     if (!searchValue) {
-      router.push(pathName)
+      router.replace(pathName)
     } else {
       const params = new URLSearchParams(searchParams.toString())
       params.set('search', searchValue)
-      router.push(`${pathName}?${params}`)
+      router.replace(`${pathName}?${params}`)
     }
   }
 
