@@ -6,6 +6,7 @@ import reverse from '@/starrysky-music/album/timeshift-fr/setlist/04-re-verse.mu
 import newMagicalGirl from '../album/timeshift-fr/setlist/05-new-magical-girl.json'
 import anOldColor from '../album/timeshift-fr/setlist/06-an-old-color.json'
 import l from '../album/timeshift-fr/setlist/07-l.json'
+import reProg from '../album/timeshift-fr/setlist/08-reprog.json'
 import Music from '@/starrysky-music/types/music.type'
 
 const getAlbumSetlist = (title: Album['title']): Music[] => {
@@ -19,6 +20,7 @@ const getAlbumSetlist = (title: Album['title']): Music[] => {
         newMagicalGirl,
         anOldColor,
         l,
+        reProg,
       ]
     default:
       console.error(`Failed to get setlist for album named ${title}`)
