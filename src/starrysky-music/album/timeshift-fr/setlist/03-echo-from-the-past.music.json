@@ -58,11 +58,11 @@
     ]
   ],
   "links": {
-    "youTube": null,
-    "deezer": null,
-    "spotify": null,
-    "appleMusic": null,
-    "bandCamp": null,
+    "youTube": "https://www.youtube.com/watch?v=zHub4RitXbg",
+    "deezer": "https://deezer.page.link/rpvEtXAjX7FStEGC9",
+    "spotify": "https://open.spotify.com/intl-fr/track/5rG7vdu07JqNT9JPinIAQe?si=2001ba6fc9a54dee",
+    "appleMusic": "https://music.apple.com/fr/album/echo-from-the-past-version-fran%C3%A7aise/1629959680?i=1629959683",
+    "bandCamp": "https://starrysky.bandcamp.com/track/echo-from-the-past-version-fran-aise",
     "other": null
   },
   "languageVariant": "FR"

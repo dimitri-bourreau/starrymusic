@@ -34,11 +34,11 @@
     ]
   ],
   "links": {
-    "youTube": null,
-    "deezer": null,
-    "spotify": null,
-    "appleMusic": null,
-    "bandCamp": null,
+    "youTube": "https://www.youtube.com/watch?v=c3K0ukEE3eQ",
+    "deezer": "https://deezer.page.link/XyVBKZUNgS3ogKJt7",
+    "spotify": "https://open.spotify.com/intl-fr/track/6JKkJYFFt9eEmcwNozBBES?si=674c3105e8164024",
+    "appleMusic": "https://music.apple.com/fr/album/re-verse-version-fran%C3%A7aise/1629959680?i=1629959685",
+    "bandCamp": "https://starrysky.bandcamp.com/track/re-verse-version-fran-aise",
     "other": null
   },
   "languageVariant": "FR"

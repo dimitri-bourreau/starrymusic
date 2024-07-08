@@ -31,11 +31,11 @@
     ["Ça n'a pas de sens sens sens", "Ça n'a pas de sens sens sens"]
   ],
   "links": {
-    "youTube": null,
-    "deezer": null,
-    "spotify": null,
-    "appleMusic": null,
-    "bandCamp": null,
+    "youTube": "https://www.youtube.com/watch?v=PNwx2aZ8LlM",
+    "deezer": "https://deezer.page.link/qHtTsYmp4DYBnaNa9",
+    "spotify": "https://open.spotify.com/intl-fr/track/7lp7Yy2FStaKczpJ78Tc1g?si=e5060ad426f74a53",
+    "appleMusic": "https://music.apple.com/fr/album/an-old-color-version-fran%C3%A7aise/1629959680?i=1629959687",
+    "bandCamp": "https://starrysky.bandcamp.com/track/an-old-color-version-fran-aise",
     "other": null
   },
   "languageVariant": "FR"
