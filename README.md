@@ -12,11 +12,15 @@ npm i
 npm run dev
 ```
 
+## À venir
+
+- Docker/Postgres
+- Interface admin
+
 ## Participer
 
 - Via GitHub
   - Vous pouvez [créer une `issue`](https://github.com/dimitri-bourreau/starrymusic/issues/new).
   - Vous pouvez proposer une PR pointant sur `main`. 
-    - Aucune PR modifiant la BDD sera acceptée (peut être qu'une interface admin sera disponible au futur).
 - Sans GitHub
   - Vous pouvez me contacter à `dimitri@release-dev.com`.
