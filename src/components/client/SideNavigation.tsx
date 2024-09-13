@@ -1,13 +1,13 @@
 'use client'
 
-import AllMusicTable from '@/components/AllMusicTable'
+import AllMusicTable from '@/components/client/AllMusicTable'
 import Image from 'next/image'
 import posterImage from '@/images/poster.jpg'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
-import AllAlbumsTable from '@/components/AllAlbumsTable'
 import { ChangeEvent, useEffect } from 'react'
+import AllAlbumsTable from '@/components/client/AllAlbumsTable'
 
 const SideNavigation = () => {
   const router = useRouter()

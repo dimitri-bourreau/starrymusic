@@ -1,3 +1,5 @@
+'use client'
+
 import getAllMusic from '@/starrysky-music/features/get-all-music'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'

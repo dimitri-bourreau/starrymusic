@@ -1,4 +1,4 @@
-import { TinyWaveFormIcon } from '@/components/TinyWaveFormIcon'
+import { TinyWaveFormIcon } from '@/components/server/TinyWaveFormIcon'
 import Link from 'next/link'
 
 export default function ExternalLinks() {

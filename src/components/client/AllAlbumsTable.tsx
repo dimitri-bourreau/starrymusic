@@ -1,31 +1,46 @@
+'use client'
+
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
-import getAllAlbums from '@/starrysky-music/features/get-all-albums'
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { getAlbums } from '@/features/album/get-albums.feature'
+import { outputs } from '@/config/outputs.config'
+import { Albums } from '@/features/album/types/albums.type'
+
+interface filterAlbumsWithSearchQueryArgs {
+  searchQuery: string | null
+  albums: Albums
+  setAlbumsToDisplay: Dispatch<SetStateAction<Albums>>
+}
 
 export default function AllAlbumsTable() {
+  const [albums, setAlbums] = useState<Albums>([])
+  const [albumsToDisplay, setAlbumsToDisplay] = useState<Albums>(albums)
+
   const router = useRouter()
   const pathName = usePathname()
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('search')
   const decodedPathName = decodeURIComponent(pathName)
 
-  const albums = getAllAlbums().sort((a, b) => {
-    return a.title < b.title ? -1 : 1
-  })
-
-  const [albumsToDisplay, setAlbumsToDisplay] = useState(albums)
-
-  useEffect(() => {
-    if (!searchQuery) {
-      setAlbumsToDisplay(albums)
-    } else {
+  const filterAlbumsWithSearchQuery = ({
+    searchQuery,
+    albums,
+    setAlbumsToDisplay,
+  }: filterAlbumsWithSearchQueryArgs): void => {
+    if (!searchQuery) setAlbumsToDisplay(albums)
+    else {
       const filteredMusic = albums.filter(({ title }) =>
         title.toLowerCase().includes(searchQuery.toLowerCase()),
       )
       setAlbumsToDisplay(filteredMusic)
     }
-  }, [searchQuery])
+  }
+
+  const fetchAlbums = async (albumsSetter: typeof setAlbums) => {
+    const albums = await getAlbums(outputs.album)
+    albumsSetter(albums)
+  }
 
   const redirectToAlbum = (title: string) => {
     let url = encodeURI(`/albums/${title}`)
@@ -33,12 +48,16 @@ export default function AllAlbumsTable() {
     router.push(url)
   }
 
+  useEffect(() => {
+    void fetchAlbums(setAlbums)
+  }, [])
+
+  useEffect(() => {
+    filterAlbumsWithSearchQuery({ searchQuery, albums, setAlbumsToDisplay })
+  }, [searchQuery, albums])
+
   if (albumsToDisplay.length === 0) {
-    return (
-      <p className="p-4 text-gray-500">
-        Aucun album ne correspond à votre recherche
-      </p>
-    )
+    return <p className="p-4 text-gray-500">...</p>
   }
 
   return (

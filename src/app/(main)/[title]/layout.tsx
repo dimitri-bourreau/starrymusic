@@ -3,10 +3,10 @@
 import { ReactNode } from 'react'
 import getMusic from '@/starrysky-music/features/get-music'
 import Image from 'next/image'
-import Tabs from '@/components/Tabs'
+import Tabs from '@/components/server/Tabs'
 import { usePathname } from 'next/navigation'
 import getAlbum from '@/starrysky-music/features/get-album'
-import MediaLinks from '@/components/MediaLinks'
+import MediaLinks from '@/components/server/MediaLinks'
 
 interface MusicLayoutProps {
   children: ReactNode

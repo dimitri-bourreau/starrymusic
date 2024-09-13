@@ -2,8 +2,8 @@
 
 import { ReactNode, Suspense } from 'react'
 
-import { Waveform } from '@/components/Waveform'
-import SideNavigation from '@/components/SideNavigation'
+import { Waveform } from '@/components/server/Waveform'
+import SideNavigation from '@/components/client/SideNavigation'
 import { usePathname } from 'next/navigation'
 
 export default function MainLayout({ children }: { children: ReactNode }) {

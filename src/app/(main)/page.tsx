@@ -1,10 +1,8 @@
-'use client'
-
 import { Fragment } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import posterImage from '@/images/poster.jpg'
-import ExternalLinks from '@/components/ExternalLinks'
+import ExternalLinks from '@/components/server/ExternalLinks'
 
 export default function Home() {
   const bandMembers = ['Tai', 'Sasha', 'Yuki', 'Logan', 'Neku']

@@ -14,8 +14,7 @@ npm run dev
 
 ## À venir
 
-- Docker/Postgres
-- Interface admin
+- SSR sur toute l'app
 
 ## Participer
 

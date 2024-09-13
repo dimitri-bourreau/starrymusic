@@ -1,4 +1,4 @@
-import MusicDetails from '@/components/MusicDetails'
+import MusicDetails from '@/components/client/MusicDetails'
 import getMusic from '@/starrysky-music/features/get-music'
 
 interface PageProps {

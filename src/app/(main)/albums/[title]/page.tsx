@@ -2,9 +2,9 @@ import Album from '@/starrysky-music/types/album.type'
 import getAllAlbumsTitle from '@/starrysky-music/features/get-all-albums-title'
 import getAlbum from '@/starrysky-music/features/get-album'
 import Image from 'next/image'
-import AlbumSetlist from '@/components/AlbumSetlist'
+import AlbumSetlist from '@/components/client/AlbumSetlist'
 import { Suspense } from 'react'
-import MediaLinks from '@/components/MediaLinks'
+import MediaLinks from '@/components/server/MediaLinks'
 
 export function generateStaticParams() {
   const titles = getAllAlbumsTitle()

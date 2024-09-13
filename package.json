@@ -10,7 +10,9 @@
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
     "@tailwindcss/typography": "^0.5.7",
+    "@tanstack/react-query": "^5.56.1",
     "@types/node": "^20.10.8",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
