@@ -1,16 +1,21 @@
 'use client'
 
-import getAllMusic from '@/starrysky-music/features/get-all-music'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Songs } from '@/features/song/types/songs.type'
 import { getAllSongs } from '@/features/song/get-all-songs.feature'
 import { outputs } from '@/config/outputs.config'
 
+interface filterSongsFromQueryArgs {
+  query: string | null
+  songsToDisplaySetter: Dispatch<SetStateAction<Songs>>
+  allSongs: Songs
+}
+
 export default function AllMusicTable() {
   const [songs, setSongs] = useState<Songs>([])
-  const [musicToDisplay, setMusicToDisplay] = useState(songs)
+  const [songsToDisplay, setSongsToDisplay] = useState(songs)
 
   const router = useRouter()
   const pathName = usePathname()
@@ -23,19 +28,29 @@ export default function AllMusicTable() {
     songsSetter(songs)
   }
 
+  const filterSongsFromQuery = ({
+    allSongs,
+    query,
+    songsToDisplaySetter,
+  }: filterSongsFromQueryArgs) => {
+    if (query) {
+      const filteredMusic = allSongs.filter(({ title }) =>
+        title.toLowerCase().includes(query.toLowerCase()),
+      )
+      songsToDisplaySetter(filteredMusic)
+    } else songsToDisplaySetter(allSongs)
+  }
+
   useEffect(() => {
     void fetchSongs(setSongs)
   }, [])
 
   useEffect(() => {
-    if (!searchQuery) {
-      setMusicToDisplay(songs)
-    } else {
-      const filteredMusic = songs.filter(({ title }) =>
-        title.toLowerCase().includes(searchQuery.toLowerCase()),
-      )
-      setMusicToDisplay(filteredMusic)
-    }
+    filterSongsFromQuery({
+      allSongs: songs,
+      songsToDisplaySetter: setSongsToDisplay,
+      query: searchQuery,
+    })
   }, [searchQuery, songs])
 
   const redirectToTitle = (title: string) => {
@@ -47,7 +62,7 @@ export default function AllMusicTable() {
     router.push(url)
   }
 
-  if (musicToDisplay.length === 0) {
+  if (songsToDisplay.length === 0) {
     return <p className="p-4 text-gray-500">...</p>
   }
 
@@ -62,7 +77,7 @@ export default function AllMusicTable() {
       </thead>
 
       <tbody>
-        {musicToDisplay.map(({ title, language_variant }, index) => {
+        {songsToDisplay.map(({ title, language_variant }, index) => {
           const languageExtension = language_variant
             ? ` (${language_variant})`
             : null
