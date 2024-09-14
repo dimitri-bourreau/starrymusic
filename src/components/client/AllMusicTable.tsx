@@ -4,19 +4,28 @@ import getAllMusic from '@/starrysky-music/features/get-all-music'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
+import { Songs } from '@/features/song/types/songs.type'
+import { getAllSongs } from '@/features/song/get-all-songs.feature'
+import { outputs } from '@/config/outputs.config'
 
 export default function AllMusicTable() {
+  const [songs, setSongs] = useState<Songs>([])
+  const [musicToDisplay, setMusicToDisplay] = useState(songs)
+
   const router = useRouter()
   const pathName = usePathname()
   const decodedPathName = decodeURIComponent(pathName)
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('search')
 
-  const songs = getAllMusic().sort((a, b) => {
-    return a.title < b.title ? -1 : 1
-  })
+  const fetchSongs = async (songsSetter: typeof setSongs) => {
+    const songs = await getAllSongs(outputs.song)
+    songsSetter(songs)
+  }
 
-  const [musicToDisplay, setMusicToDisplay] = useState(songs)
+  useEffect(() => {
+    void fetchSongs(setSongs)
+  }, [])
 
   useEffect(() => {
     if (!searchQuery) {
@@ -27,7 +36,7 @@ export default function AllMusicTable() {
       )
       setMusicToDisplay(filteredMusic)
     }
-  }, [searchQuery])
+  }, [searchQuery, songs])
 
   const redirectToTitle = (title: string) => {
     let url = encodeURI(`/${title}`)
@@ -39,11 +48,7 @@ export default function AllMusicTable() {
   }
 
   if (musicToDisplay.length === 0) {
-    return (
-      <p className="p-4 text-gray-500">
-        Aucune musique ne correspond à votre recherche
-      </p>
-    )
+    return <p className="p-4 text-gray-500">...</p>
   }
 
   return (
@@ -57,14 +62,14 @@ export default function AllMusicTable() {
       </thead>
 
       <tbody>
-        {musicToDisplay.map(({ title, album, languageVariant }) => {
-          const languageExtension = languageVariant
-            ? ` (${languageVariant})`
+        {musicToDisplay.map(({ title, language_variant }, index) => {
+          const languageExtension = language_variant
+            ? ` (${language_variant})`
             : null
 
           return (
             <tr
-              key={`${title}:${album}`}
+              key={`${title}:${index}`}
               className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
                 'bg-pink-200 dark:bg-pink-800': decodedPathName.includes(
                   `/${title}/`,
