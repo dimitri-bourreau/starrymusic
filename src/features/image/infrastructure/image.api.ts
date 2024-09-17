@@ -1,0 +1,16 @@
+import { ImageOutput } from '@/features/image/infrastructure/image.output'
+import { Image } from '@/features/image/types/image.type'
+import { supabase } from '@/config/supabase.config'
+
+export class ImageApi implements ImageOutput {
+  async getImage(imageId: number): Promise<Image> {
+    const { data: image, error } = await supabase
+      .from('images')
+      .select()
+      .eq('ID', imageId)
+    if (image === null || !image[0] || error) {
+      throw new Error(`Échec de la récupération de l'image à l'id ${imageId}`)
+    }
+    return image[0]
+  }
+}

@@ -94,7 +94,7 @@ export type Database = {
         Row: {
           apple_music: string | null
           band_camp: string | null
-          credits_extra: string[] | null
+          credits_extra: string | null
           credits_lead_vocals: string | null
           credits_lyrics: string | null
           credits_music: string | null
@@ -113,7 +113,7 @@ export type Database = {
         Insert: {
           apple_music?: string | null
           band_camp?: string | null
-          credits_extra?: string[] | null
+          credits_extra?: string | null
           credits_lead_vocals?: string | null
           credits_lyrics?: string | null
           credits_music?: string | null
@@ -132,7 +132,7 @@ export type Database = {
         Update: {
           apple_music?: string | null
           band_camp?: string | null
-          credits_extra?: string[] | null
+          credits_extra?: string | null
           credits_lead_vocals?: string | null
           credits_lyrics?: string | null
           credits_music?: string | null
