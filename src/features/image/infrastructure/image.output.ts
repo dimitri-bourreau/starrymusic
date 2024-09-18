@@ -1,5 +1,5 @@
-import { Image } from '@/features/image/types/image.type'
+import { ImageType } from '@/features/image/types/image.type'
 
 export interface ImageOutput {
-  getImage(imageId: number): Promise<Image>
+  getImage(imageId: number): Promise<ImageType>
 }

@@ -88,10 +88,19 @@ export type Database = {
           songs_ids?: number[] | null
           work_in_progress?: boolean | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "setlists_album_id_fkey"
+            columns: ["album_id"]
+            isOneToOne: false
+            referencedRelation: "albums"
+            referencedColumns: ["ID"]
+          },
+        ]
       }
       songs: {
         Row: {
+          album_id: number | null
           apple_music: string | null
           band_camp: string | null
           credits_extra: string | null
@@ -111,6 +120,7 @@ export type Database = {
           you_tube: string | null
         }
         Insert: {
+          album_id?: number | null
           apple_music?: string | null
           band_camp?: string | null
           credits_extra?: string | null
@@ -130,6 +140,7 @@ export type Database = {
           you_tube?: string | null
         }
         Update: {
+          album_id?: number | null
           apple_music?: string | null
           band_camp?: string | null
           credits_extra?: string | null
@@ -148,7 +159,15 @@ export type Database = {
           year?: number | null
           you_tube?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "songs_album_id_fkey"
+            columns: ["album_id"]
+            isOneToOne: false
+            referencedRelation: "albums"
+            referencedColumns: ["ID"]
+          },
+        ]
       }
     }
     Views: {

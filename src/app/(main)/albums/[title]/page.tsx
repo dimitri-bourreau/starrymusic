@@ -1,22 +1,21 @@
-import getAllAlbumsTitle from '@/starrysky-music/features/get-all-albums-title'
 import Image from 'next/image'
 import AlbumSetlist from '@/components/client/AlbumSetlist'
 import { Suspense } from 'react'
 import MediaLinks from '@/components/server/MediaLinks'
 import { getAlbumByTitle } from '@/features/album/get-album-by-title.feature'
 import { outputs } from '@/config/outputs.config'
-import { Album } from '@/features/album/types/album.type'
 import { getImage } from '@/features/image/get-image.feature'
+import { getAllAlbumsTitles } from '@/features/album/get-all-albums-titles.feature'
 
-export function generateStaticParams() {
-  const titles = getAllAlbumsTitle()
+export async function generateStaticParams() {
+  const titles = await getAllAlbumsTitles(outputs.album)
   return titles.map((title) => ({
     title,
   }))
 }
 
 interface PageProps {
-  params: { title: Album['title'] }
+  params: { title: string }
 }
 
 export default async function Page({ params }: PageProps) {

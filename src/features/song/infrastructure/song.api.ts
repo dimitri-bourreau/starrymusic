@@ -20,4 +20,16 @@ export class SongApi implements SongOutput {
       throw new Error(`Échec de la récupération de la musique à l'id ${songId}`)
     return song[0]
   }
+
+  async getSongByTitle(soundTitle: string): Promise<Song> {
+    const { data: song, error } = await supabase
+      .from('songs')
+      .select()
+      .eq('title', soundTitle)
+    if (song === null || !song[0] || error)
+      throw new Error(
+        `Échec de la récupération de la musique au titre ${soundTitle}`,
+      )
+    return song[0]
+  }
 }

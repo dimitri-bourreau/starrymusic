@@ -1,3 +1,3 @@
 import { Database } from '../../../../supabase/database.type'
 
-export type Image = Database['public']['Tables']['images']['Row']
+export type ImageType = Database['public']['Tables']['images']['Row']

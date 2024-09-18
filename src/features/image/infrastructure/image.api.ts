@@ -1,9 +1,9 @@
 import { ImageOutput } from '@/features/image/infrastructure/image.output'
-import { Image } from '@/features/image/types/image.type'
+import { ImageType } from '@/features/image/types/image.type'
 import { supabase } from '@/config/supabase.config'
 
 export class ImageApi implements ImageOutput {
-  async getImage(imageId: number): Promise<Image> {
+  async getImage(imageId: number): Promise<ImageType> {
     const { data: image, error } = await supabase
       .from('images')
       .select()
