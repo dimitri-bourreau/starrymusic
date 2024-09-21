@@ -12,9 +12,10 @@ interface filterAlbumsWithSearchQueryArgs {
 
 interface TitlesListProps {
   titles: string[]
+  context: 'album' | 'song'
 }
 
-export const TitlesList = ({ titles }: TitlesListProps) => {
+export const TitlesList = ({ titles, context }: TitlesListProps) => {
   const [titlesToDisplay, setTitlesToDisplay] = useState<string[]>(titles)
 
   const router = useRouter()
@@ -45,8 +46,29 @@ export const TitlesList = ({ titles }: TitlesListProps) => {
     })
   }, [searchQuery, titles])
 
+  const redirectToAlbum = (title: string) => {
+    const url = `/albums/${title}/${searchParams.toString()}`
+    router.push(encodeURI(url))
+  }
+
+  const redirectToSong = (title: string) => {
+    let url = `/${title}`
+    if (pathName?.endsWith('paroles')) url += '/paroles'
+    else if (pathName?.endsWith('details')) url += '/details'
+    else if (pathName?.endsWith('ecouter')) url += '/ecouter'
+    url += `?${searchParams.toString()}`
+    router.push(encodeURI(url))
+  }
+
   const redirectToTitle = (title: string) => {
-    router.push(encodeURI(`/albums/${title}`))
+    switch (context) {
+      case 'album':
+        redirectToAlbum(title)
+        break
+      case 'song':
+        redirectToSong(title)
+        break
+    }
   }
 
   return (

@@ -10,5 +10,7 @@ export default async function AllAlbumsTable() {
     return <p className="p-4 text-gray-500">...</p>
   }
 
-  return <TitlesList titles={albums.map(({ title }) => title)} />
+  return (
+    <TitlesList titles={albums.map(({ title }) => title)} context="album" />
+  )
 }
