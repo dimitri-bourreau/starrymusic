@@ -1,15 +1,23 @@
 'use client'
 
-import AllMusicTable from '@/components/client/AllMusicTable'
 import Image from 'next/image'
 import posterImage from '@/images/poster.jpg'
 import Link from 'next/link'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import {
+  redirect,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from 'next/navigation'
 import clsx from 'clsx'
-import { ChangeEvent, useEffect } from 'react'
-import AllAlbumsTable from '@/components/client/AllAlbumsTable'
+import { ChangeEvent, ReactNode, useEffect } from 'react'
 
-const SideNavigation = () => {
+interface SideNavigationProps {
+  allAlbums: ReactNode
+  allSongs: ReactNode
+}
+
+const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
   const router = useRouter()
   const pathName = usePathname()
   const searchParams = useSearchParams()
@@ -30,7 +38,7 @@ const SideNavigation = () => {
   useEffect(() => {
     if (searchQuery?.toLowerCase() === 'caca') {
       const confirmation = confirm('Heu, on continue ou tu annule ?')
-      if (confirmation) router.push('/caca')
+      if (confirmation) redirect('/caca')
     }
   }, [searchQuery])
 
@@ -70,14 +78,14 @@ const SideNavigation = () => {
         <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
           Albums
         </h2>
-        <AllAlbumsTable />
+        {allAlbums}
       </div>
 
       <div className="max-h-1/3 sm:max-h-auto overflow-auto sm:overflow-hidden">
         <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
           Musiques
         </h2>
-        <AllMusicTable />
+        {allSongs}
       </div>
 
       <div className="relative mt-auto flex items-center">
