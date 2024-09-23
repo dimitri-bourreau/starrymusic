@@ -1,13 +1,17 @@
-import getMusic from '@/starrysky-music/features/get-music'
+import { getSongByTitle } from '@/features/song/get-song-by-title.feature'
+import { outputs } from '@/config/outputs.config'
 
 interface PageProps {
   params: { title: string }
 }
 
-export default function Page({ params }: PageProps) {
-  const music = getMusic(decodeURIComponent(params.title))
+export default async function Page({ params }: PageProps) {
+  const song = await getSongByTitle(
+    outputs.song,
+    decodeURIComponent(params.title),
+  )
 
-  if (!music)
+  if (!song)
     return (
       <p className="ml-4 mt-10">
         Impossible de trouver les paroles, contactez Dimitri, c&apos;est louche
@@ -15,7 +19,7 @@ export default function Page({ params }: PageProps) {
       </p>
     )
 
-  if (music.lyrics === null)
+  if (song.lyrics === null)
     return (
       <p className="ml-4 mt-10 text-gray-500">
         Cette musique ne contient pas de paroles.
@@ -24,20 +28,7 @@ export default function Page({ params }: PageProps) {
 
   return (
     <div className="flex flex-col gap-4 p-4 px-10">
-      {music.lyrics.map((chapter, chapterIndex) => {
-        return (
-          <div key={chapterIndex}>
-            {chapter.map((line, lineIndex) => (
-              <p
-                className="dark:text-white"
-                key={`${chapterIndex}${lineIndex}`}
-              >
-                {line}
-              </p>
-            ))}
-          </div>
-        )
-      })}
+      <p className="whitespace-pre-line dark:text-white">{song.lyrics}</p>
     </div>
   )
 }

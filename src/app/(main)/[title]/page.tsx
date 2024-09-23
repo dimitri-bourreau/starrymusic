@@ -1,10 +1,9 @@
 'use client'
 
-import Music from '@/starrysky-music/types/music.type'
 import { permanentRedirect, useSearchParams } from 'next/navigation'
 
 interface PageProps {
-  params: { title: Music['title'] }
+  params: { title: string }
 }
 
 export default function Page({ params }: PageProps) {
