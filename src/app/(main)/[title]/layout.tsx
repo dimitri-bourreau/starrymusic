@@ -18,7 +18,10 @@ export default async function MusicLayout({
   children,
   params,
 }: MusicLayoutProps) {
-  const song = await getSongByTitle(outputs.song, params.title)
+  const song = await getSongByTitle(
+    outputs.song,
+    decodeURIComponent(params.title),
+  )
   const associatedAlbum =
     typeof song.album_id === 'number'
       ? await getAlbum(outputs.album, song.album_id)
