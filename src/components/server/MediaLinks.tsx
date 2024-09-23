@@ -12,7 +12,10 @@ interface MediaLinksProps {
 const MediaLink = ({ href, label }: { href: string | null; label: string }) => {
   if (!href) return <></>
   return (
-    <Link href={href} className="block text-pink-600 dark:text-pink-500">
+    <Link
+      href={href}
+      className="block text-pink-600 hover:underline dark:text-pink-500"
+    >
       {label}
     </Link>
   )
