@@ -2,18 +2,28 @@
 
 import clsx from 'clsx'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
-interface TabsProps {
-  tabs: {
-    name: string
-    href: string
-    current: boolean
-  }[]
+interface SongTabsProps {
+  title: string
 }
 
-const Tabs = ({ tabs }: TabsProps) => {
+const SongTabs = ({ title }: SongTabsProps) => {
   const router = useRouter()
+  const pathName = usePathname()
+
+  const tabs = [
+    {
+      name: 'Paroles',
+      href: `/${title}/paroles`,
+      current: pathName.includes('paroles'),
+    },
+    {
+      name: 'Détails',
+      href: `/${title}/details`,
+      current: pathName.includes('details'),
+    },
+  ]
 
   return (
     <div>
@@ -65,4 +75,4 @@ const Tabs = ({ tabs }: TabsProps) => {
   )
 }
 
-export default Tabs
+export default SongTabs

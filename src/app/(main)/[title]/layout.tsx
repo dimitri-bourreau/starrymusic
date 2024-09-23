@@ -1,15 +1,10 @@
-'use client'
-
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode } from 'react'
 import Image from 'next/image'
-import Tabs from '@/components/server/Tabs'
-import { usePathname } from 'next/navigation'
+import SongTabs from '@/components/client/SongTabs'
 import MediaLinks from '@/components/server/MediaLinks'
-import { Song } from '@/features/song/types/song.type'
 import { getSongByTitle } from '@/features/song/get-song-by-title.feature'
 import { outputs } from '@/config/outputs.config'
 import { getAlbum } from '@/features/album/get-album.feature'
-import { ImageType } from '@/features/image/types/image.type'
 import { getImage } from '@/features/image/get-image.feature'
 
 interface MusicLayoutProps {
@@ -19,51 +14,19 @@ interface MusicLayoutProps {
   }
 }
 
-export default function MusicLayout({ children, params }: MusicLayoutProps) {
-  const [song, setSong] = useState<Song>()
-  const [associatedAlbumImage, setAssociatedAlbumImage] = useState<ImageType>({
-    url: '/albums/default-album-cover.jpg',
-    name: 'Album cover',
-    ID: 0,
-  })
-  const pathName = usePathname()
-
-  const fetchSong = async (songTitle: string, songSetter: typeof setSong) => {
-    const song = await getSongByTitle(outputs.song, songTitle)
-    songSetter(song)
-  }
-
-  const fetchAssociatedAlbumImage = async (
-    albumId: number,
-    imageSetter: typeof setAssociatedAlbumImage,
-  ) => {
-    const associatedAlbum = await getAlbum(outputs.album, albumId)
-    if (!associatedAlbum?.image) return
-    const image = await getImage(outputs.image, associatedAlbum.image)
-    imageSetter(image)
-  }
-
-  useEffect(() => {
-    void fetchSong(decodeURIComponent(params.title), setSong)
-  }, [params.title])
-
-  useEffect(() => {
-    if (!song?.album_id) return
-    void fetchAssociatedAlbumImage(song.album_id, setAssociatedAlbumImage)
-  }, [song?.album_id])
-
-  const tabs = [
-    {
-      name: 'Paroles',
-      href: `/${params.title}/paroles`,
-      current: pathName.includes('paroles'),
-    },
-    {
-      name: 'Détails',
-      href: `/${params.title}/details`,
-      current: pathName.includes('details'),
-    },
-  ]
+export default async function MusicLayout({
+  children,
+  params,
+}: MusicLayoutProps) {
+  const song = await getSongByTitle(outputs.song, params.title)
+  const associatedAlbum =
+    typeof song.album_id === 'number'
+      ? await getAlbum(outputs.album, song.album_id)
+      : null
+  const associatedAlbumImage = await getImage(
+    outputs.image,
+    associatedAlbum?.image,
+  )
 
   return (
     <div className="px-4 py-10">
@@ -116,7 +79,7 @@ export default function MusicLayout({ children, params }: MusicLayoutProps) {
             </div>
           </div>
 
-          <Tabs tabs={tabs} />
+          <SongTabs title={params.title} />
 
           {children}
         </>
