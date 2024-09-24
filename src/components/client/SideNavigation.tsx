@@ -45,7 +45,11 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
   return (
     <div
       className={clsx(
-        'flex flex-col gap-4 bg-slate-50 px-4 py-10 sm:sticky sm:top-0 sm:min-h-screen sm:gap-10 lg:border-x lg:border-slate-200 dark:border-slate-800 dark:bg-black',
+        'flex flex-col gap-4 sm:gap-10',
+        'bg-slate-50 dark:bg-black',
+        'h-screen px-4 py-10',
+        'sm:sticky sm:top-0 sm:min-h-screen',
+        'lg:border-x lg:border-slate-200 dark:border-slate-800',
         {
           'min-h-screen': pathName === '/',
         },
@@ -69,23 +73,23 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
           <Link href={homeUrl}>starrymusic.fr</Link>
         </p>
       </div>
-      <p className="mt-3 text-center font-medium leading-8 text-slate-700 sm:hidden dark:text-zinc-300">
-        Site réalisé par des fans de Starrysky pour regrouper leurs musiques
-        avec leurs paroles. 👋
-      </p>
 
-      <div className="max-h-1/3 sm:max-h-auto overflow-auto sm:overflow-hidden">
+      <div className="h-1/3">
         <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
           Albums
         </h2>
-        {allAlbums}
+        <div className="h-full overflow-auto rounded-xl bg-pink-300/5">
+          {allAlbums}
+        </div>
       </div>
 
-      <div className="max-h-1/3 sm:max-h-auto overflow-auto sm:overflow-hidden">
+      <div className="h-1/3">
         <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
           Musiques
         </h2>
-        {allSongs}
+        <div className="h-full overflow-auto rounded-xl bg-pink-300/5">
+          {allSongs}
+        </div>
       </div>
 
       <div className="relative mt-auto flex items-center">
