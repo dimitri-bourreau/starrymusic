@@ -3,14 +3,16 @@ import { outputs } from '@/config/outputs.config'
 import { Albums } from '@/features/album/types/albums.type'
 import { TitlesList } from '@/components/client/TitlesList'
 
-export default async function AllAlbumsTable() {
-  const albums: Albums = await getAlbums(outputs.album)
+interface AllAlbumsTableProps {
+  albums: Albums
+}
+
+export default async function AllAlbumsTable({ albums }: AllAlbumsTableProps) {
+  const titles = albums.map(({ title }) => title)
 
   if (albums.length === 0) {
     return <p className="p-4 text-gray-500">...</p>
   }
 
-  return (
-    <TitlesList titles={albums.map(({ title }) => title)} context="album" />
-  )
+  return <TitlesList titles={titles} context="album" />
 }

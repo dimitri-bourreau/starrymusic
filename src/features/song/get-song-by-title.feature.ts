@@ -1,5 +1,14 @@
-import { SongOutput } from '@/features/song/infrastructure/song.output'
+import { Songs } from '@/features/song/types/songs.type'
+import { Song } from '@/features/song/types/song.type'
 
-export const getSongByTitle = (output: SongOutput, soundTitle: string) => {
-  return output.getSongByTitle(soundTitle)
+interface GetSongByTitleArgs {
+  titleToFind: string
+  songs: Songs
+}
+
+export const getSongByTitle = ({
+  titleToFind,
+  songs,
+}: GetSongByTitleArgs): Song | undefined => {
+  return songs.find(({ title }) => title === titleToFind)
 }
