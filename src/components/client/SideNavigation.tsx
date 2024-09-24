@@ -27,11 +27,11 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
   const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchValue = event.target.value
     if (!searchValue) {
-      router.replace(pathName)
+      router.push(pathName)
     } else {
       const params = new URLSearchParams(searchParams.toString())
       params.set('search', searchValue)
-      router.replace(`${pathName}?${params}`)
+      router.push(`${pathName}?${params}`)
     }
   }
 
