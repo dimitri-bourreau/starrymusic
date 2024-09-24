@@ -1,6 +1,6 @@
 import { Setlist } from '@/features/album/types/setlist.type'
 
-export const mockAlbumSetlist: Setlist = {
+export const mockSetlist: Setlist = {
   ID: 1,
   album_id: 1,
   songs_ids: [1, 2, 3],
