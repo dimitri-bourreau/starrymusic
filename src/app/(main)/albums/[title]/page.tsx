@@ -6,6 +6,11 @@ import { getAlbumByTitle } from '@/features/album/get-album-by-title.feature'
 import { outputs } from '@/config/outputs.config'
 import { getImage } from '@/features/image/get-image.feature'
 import { getAllAlbumsTitles } from '@/features/album/get-all-albums-titles.feature'
+import { getAlbums } from '@/features/album/get-albums.feature'
+import { getSetlists } from '@/features/album/get-setlists.feature'
+import { getSetlist } from '@/features/album/get-setlist.feature'
+import { getAllSongs } from '@/features/song/get-all-songs.feature'
+import { Songs } from '@/features/song/types/songs.type'
 
 export async function generateStaticParams() {
   const titles = await getAllAlbumsTitles(outputs.album)
@@ -18,11 +23,22 @@ interface PageProps {
   params: { title: string }
 }
 
+function isDefined<T>(value: T | undefined): value is T {
+  return value !== undefined
+}
+
 export default async function Page({ params }: PageProps) {
-  const album = await getAlbumByTitle(
-    outputs.album,
-    decodeURIComponent(params.title),
-  )
+  const albums = await getAlbums(outputs.album)
+  const setlists = await getSetlists(outputs.album)
+  const songs = await getAllSongs(outputs.song)
+
+  const album = getAlbumByTitle(albums, decodeURIComponent(params.title))
+  const setlist = getSetlist(album, setlists)
+  const setlistSongs: Songs = setlist?.songs_ids
+    ? setlist.songs_ids
+        .map((songId) => songs.find(({ ID }) => songId === ID))
+        .filter(isDefined)
+    : []
   const image = album.image ? await getImage(outputs.image, album.image) : null
 
   return (
@@ -79,7 +95,7 @@ export default async function Page({ params }: PageProps) {
             </div>
           </div>
           <Suspense>
-            <AlbumSetlist album={album} />
+            <AlbumSetlist setlistSongs={setlistSongs} />
           </Suspense>
         </>
       )}

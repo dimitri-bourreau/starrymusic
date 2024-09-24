@@ -1,9 +1,9 @@
-import { AlbumOutput } from '@/features/album/infrastructure/album.output'
 import { Album } from '@/features/album/types/album.type'
+import { Albums } from '@/features/album/types/albums.type'
 
 export const getAlbum = (
-  output: AlbumOutput,
+  albums: Albums,
   albumId: number,
-): Promise<Album> => {
-  return output.getAlbum(albumId)
+): Album | undefined => {
+  return albums.find(({ ID }) => albumId === ID)
 }

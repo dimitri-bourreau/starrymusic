@@ -1,15 +1,18 @@
 import { getSongByTitle } from '@/features/song/get-song-by-title.feature'
 import { outputs } from '@/config/outputs.config'
+import { getAllSongs } from '@/features/song/get-all-songs.feature'
 
 interface PageProps {
   params: { title: string }
 }
 
 export default async function Page({ params }: PageProps) {
-  const song = await getSongByTitle(
-    outputs.song,
-    decodeURIComponent(params.title),
-  )
+  const songs = await getAllSongs(outputs.song)
+
+  const song = getSongByTitle({
+    titleToFind: decodeURIComponent(params.title),
+    songs,
+  })
 
   if (!song)
     return (

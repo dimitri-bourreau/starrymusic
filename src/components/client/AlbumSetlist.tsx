@@ -1,20 +1,13 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { outputs } from '@/config/outputs.config'
-import { Album } from '@/features/album/types/album.type'
-import { getAlbumSetlist } from '@/features/album/get-album-setlist.feature'
 import { Songs } from '@/features/song/types/songs.type'
-import { Setlist } from '@/features/album/types/setlist.type'
-import { getSong } from '@/features/song/get-song.feature'
 
 interface AlbumSetlistProps {
-  album: Album
+  setlistSongs: Songs
 }
 
-export default function AlbumSetlist({ album }: AlbumSetlistProps) {
-  const [setlist, setSetlist] = useState<Songs>()
+export default function AlbumSetlist({ setlistSongs }: AlbumSetlistProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -24,23 +17,6 @@ export default function AlbumSetlist({ album }: AlbumSetlistProps) {
     if (searchQuery) url += `?${searchParams.toString()}`
     router.push(url)
   }
-
-  const fetchSetlist = async (
-    albumId: number,
-    setlistSetter: typeof setSetlist,
-  ) => {
-    const setlist: Setlist = await getAlbumSetlist(outputs.album, albumId)
-    const songs: Songs = setlist.songs_ids
-      ? await Promise.all(
-          setlist.songs_ids.map((songId) => getSong(outputs.song, songId)),
-        )
-      : []
-    setlistSetter(songs)
-  }
-
-  useEffect(() => {
-    void fetchSetlist(album.ID, setSetlist)
-  }, [album.ID])
 
   return (
     <table className="min-w-full divide-y divide-gray-300">
@@ -67,7 +43,7 @@ export default function AlbumSetlist({ album }: AlbumSetlistProps) {
         </tr>
       </thead>
       <tbody className="bg-white dark:bg-black">
-        {setlist?.map(({ title, duration }, index) => (
+        {setlistSongs.map(({ title, duration }, index) => (
           <tr
             key={`${title}${index}`}
             className="cursor-pointer even:bg-gray-100 hover:bg-pink-600/10 dark:even:bg-gray-800 dark:hover:bg-pink-600/60"

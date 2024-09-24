@@ -6,6 +6,8 @@ import { getSongByTitle } from '@/features/song/get-song-by-title.feature'
 import { outputs } from '@/config/outputs.config'
 import { getAlbum } from '@/features/album/get-album.feature'
 import { getImage } from '@/features/image/get-image.feature'
+import { getAllSongs } from '@/features/song/get-all-songs.feature'
+import { getAlbums } from '@/features/album/get-albums.feature'
 
 interface MusicLayoutProps {
   children: ReactNode
@@ -18,14 +20,15 @@ export default async function MusicLayout({
   children,
   params,
 }: MusicLayoutProps) {
-  const song = await getSongByTitle(
-    outputs.song,
-    decodeURIComponent(params.title),
-  )
+  const albums = await getAlbums(outputs.album)
+  const songs = await getAllSongs(outputs.song)
+
+  const song = getSongByTitle({
+    titleToFind: decodeURIComponent(params.title),
+    songs,
+  })
   const associatedAlbum =
-    typeof song.album_id === 'number'
-      ? await getAlbum(outputs.album, song.album_id)
-      : null
+    typeof song?.album_id === 'number' ? getAlbum(albums, song.album_id) : null
   const associatedAlbumImage = await getImage(
     outputs.image,
     associatedAlbum?.image,

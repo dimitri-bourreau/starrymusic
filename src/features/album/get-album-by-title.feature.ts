@@ -1,10 +1,6 @@
-import { AlbumOutput } from '@/features/album/infrastructure/album.output'
+import { Albums } from '@/features/album/types/albums.type'
 
-export const getAlbumByTitle = async (
-  output: AlbumOutput,
-  albumTitle: string,
-) => {
-  const albums = await output.getAlbums()
+export const getAlbumByTitle = (albums: Albums, albumTitle: string) => {
   const album = albums.find((album) => album.title === albumTitle)
   if (!album)
     throw new Error(`Impossible de récupérer l'album au titre ${albumTitle}`)
