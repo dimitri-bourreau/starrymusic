@@ -86,9 +86,9 @@ export const TitlesList = ({ titles, context }: TitlesListProps) => {
           <tr
             key={`${title}:${index}`}
             className={clsx('cursor-pointer dark:hover:bg-pink-600/50', {
-              'bg-pink-200 dark:bg-pink-800': decodedPathName.includes(
-                `/${title}`,
-              ),
+              'bg-pink-200 dark:bg-pink-800':
+                decodedPathName.includes(`/${title}/`) ||
+                decodedPathName.endsWith(`/${title}`),
               'hover:bg-pink-600/10': !decodedPathName.includes(`/${title}/`),
             })}
             onClick={() => redirectToTitle(title)}
