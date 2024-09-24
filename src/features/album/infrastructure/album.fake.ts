@@ -1,10 +1,10 @@
 import { AlbumOutput } from '@/features/album/infrastructure/album.output'
 import { Albums } from '@/features/album/types/albums.type'
-import { Setlist } from '@/features/album/types/setlist.type'
 import { Album } from '@/features/album/types/album.type'
 import { mockAlbum } from '@/features/album/mocks/album.mock'
 import { mockAlbums } from '@/features/album/mocks/albums.mock'
-import { mockAlbumSetlist } from '@/features/album/mocks/album-setlist.mock'
+import { Setlists } from '@/features/album/types/setlists.type'
+import { mockSetlists } from '@/features/album/mocks/setlists.mock'
 
 export class AlbumFake implements AlbumOutput {
   async getAlbum(_: number): Promise<Album> {
@@ -15,7 +15,7 @@ export class AlbumFake implements AlbumOutput {
     return Promise.resolve(mockAlbums)
   }
 
-  async getAlbumSetlist(_: number): Promise<Setlist> {
-    return Promise.resolve(mockAlbumSetlist)
+  async getSetlists(): Promise<Setlists> {
+    return Promise.resolve(mockSetlists)
   }
 }
