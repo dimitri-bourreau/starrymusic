@@ -31,7 +31,7 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
     } else {
       const params = new URLSearchParams(searchParams.toString())
       params.set('search', searchValue)
-      router.push(`${pathName}?${params}`)
+      router.push(`${pathName}?${params}`, { scroll: false })
     }
   }
 
@@ -100,6 +100,7 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
           placeholder="Rechercher..."
           onChange={handleSearchInputChange}
           value={searchQuery || ''}
+          autoFocus
           className="block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-black dark:text-white"
         />
       </div>
