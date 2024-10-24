@@ -10,7 +10,7 @@ import {
   useSearchParams,
 } from 'next/navigation'
 import clsx from 'clsx'
-import { ChangeEvent, ReactNode, useEffect } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 
 interface SideNavigationProps {
   allAlbums: ReactNode
@@ -22,18 +22,27 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
   const pathName = usePathname()
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('search')
+  const [searchTerm, setSearchTerm] = useState('')
+  const [debouncedTerm, setDebouncedTerm] = useState(searchTerm)
   const homeUrl = `/${searchQuery ? `?${searchParams.toString()}` : ''}`
 
-  const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchValue = event.target.value
-    if (!searchValue) {
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedTerm(searchTerm)
+    }, 300)
+
+    return () => clearTimeout(handler)
+  }, [searchTerm])
+
+  useEffect(() => {
+    if (debouncedTerm.length === 0) {
       router.push(pathName)
     } else {
       const params = new URLSearchParams(searchParams.toString())
-      params.set('search', searchValue)
-      router.push(`${pathName}?${params}`)
+      params.set('search', debouncedTerm)
+      router.push(`${pathName}?${params}`, { scroll: false })
     }
-  }
+  }, [debouncedTerm, pathName, router, searchParams])
 
   useEffect(() => {
     if (searchQuery?.toLowerCase() === 'caca') {
@@ -98,8 +107,9 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
           name="search"
           type="search"
           placeholder="Rechercher..."
-          onChange={handleSearchInputChange}
-          value={searchQuery || ''}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          defaultValue={searchQuery || ''}
+          autoFocus
           className="block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-black dark:text-white"
         />
       </div>
