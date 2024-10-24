@@ -87,7 +87,7 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
         <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
           Albums
         </h2>
-        <div className="h-full overflow-auto rounded-xl bg-pink-300/5">
+        <div className="h-full overflow-auto rounded-lg bg-pink-300/20">
           {allAlbums}
         </div>
       </div>
@@ -96,7 +96,7 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
         <h2 className="text-xl font-semibold leading-7 text-slate-700 dark:text-white">
           Musiques
         </h2>
-        <div className="h-full overflow-auto rounded-xl bg-pink-300/5">
+        <div className="h-full overflow-auto rounded-lg bg-pink-300/20">
           {allSongs}
         </div>
       </div>
