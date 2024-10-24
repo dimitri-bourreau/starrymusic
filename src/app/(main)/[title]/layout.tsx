@@ -35,7 +35,7 @@ export default async function MusicLayout({
   )
 
   return (
-    <div className="px-4 py-10">
+    <div className="px-4 py-5">
       {!song ? (
         <p className="mt-24 p-10">
           Cette musique n&apos;a pas été trouvée, oups, il faut en parler à

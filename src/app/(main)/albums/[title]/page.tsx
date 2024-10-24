@@ -42,7 +42,7 @@ export default async function Page({ params }: PageProps) {
   const image = album.image ? await getImage(outputs.image, album.image) : null
 
   return (
-    <div className="px-4 py-10">
+    <div className="px-4 py-5">
       {!album ? (
         <p className="mt-24 p-10">
           Cet album n&apos;a pas été trouvé, oups, il faut en parler à Dimitri.
