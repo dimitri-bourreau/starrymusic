@@ -12,10 +12,6 @@ npm i
 npm run dev
 ```
 
-## À venir
-
-- SSR sur toute l'app
-
 ## Participer
 
 - Via GitHub
