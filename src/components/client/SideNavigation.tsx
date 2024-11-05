@@ -46,8 +46,7 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
 
   useEffect(() => {
     if (searchQuery?.toLowerCase() === 'caca') {
-      const confirmation = confirm('Heu, on continue ou tu annule ?')
-      if (confirmation) redirect('/caca')
+      redirect('/caca')
     }
   }, [searchQuery])
 
@@ -59,9 +58,6 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
         'h-screen px-4 py-10',
         'sm:sticky sm:top-0 sm:min-h-screen',
         'lg:border-x lg:border-slate-200 dark:border-slate-800',
-        {
-          'min-h-screen': pathName === '/',
-        },
       )}
     >
       <div className="mx-auto flex items-center gap-4 sm:mx-0">
