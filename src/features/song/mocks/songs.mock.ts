@@ -22,6 +22,7 @@ export const mockSongs: Songs = [
     band_camp: 'https://starrysky.bandcamp.com/track/espille-2',
     other_links: null,
     album_id: 1,
+    image_id: 1,
   },
   {
     ID: 2,
@@ -45,6 +46,7 @@ export const mockSongs: Songs = [
       'https://starrysky.bandcamp.com/track/timeshift-version-fran-aise',
     other_links: null,
     album_id: 1,
+    image_id: 1,
   },
   {
     ID: 3,
@@ -70,5 +72,6 @@ export const mockSongs: Songs = [
       'https://starrysky.bandcamp.com/track/echo-from-the-past-version-fran-aise',
     other_links: null,
     album_id: 1,
+    image_id: 1,
   },
 ]

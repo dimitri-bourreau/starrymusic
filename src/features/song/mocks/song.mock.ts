@@ -24,4 +24,5 @@ export const mockSong: Song = {
     'https://starrysky.bandcamp.com/track/echo-from-the-past-version-fran-aise',
   other_links: null,
   album_id: 1,
+  image_id: 1,
 }
