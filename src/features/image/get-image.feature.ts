@@ -5,5 +5,5 @@ export const getImage = async (
   imageId?: number | null,
 ) => {
   if (typeof imageId === 'number') return output.getImage(imageId)
-  return output.getImage(0) // ID for default image
+  return output.getImage(1) // ID for default image
 }
