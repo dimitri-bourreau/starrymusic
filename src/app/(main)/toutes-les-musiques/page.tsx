@@ -1,6 +1,5 @@
 import { getAllSongs } from '@/features/song/get-all-songs.feature'
 import { outputs } from '@/config/outputs.config'
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import { Song } from '@/features/song/types/song.type'
 import Image from 'next/image'
 import { getImage } from '@/features/image/get-image.feature'
