@@ -52,6 +52,15 @@ export default function Home() {
             </p>
           </div>
         </div>
+
+        <Link href="/toutes-les-musiques" className="mx-auto">
+          <button
+            type="button"
+            className="rounded bg-indigo-50 px-2 py-1 text-lg font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
+          >
+            Voir toutes les musiques
+          </button>
+        </Link>
         <div className="mt-auto px-10 pb-10">
           <ExternalLinks />
         </div>

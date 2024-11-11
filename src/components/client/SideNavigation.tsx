@@ -55,7 +55,7 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
       className={clsx(
         'flex flex-col gap-4 sm:gap-10',
         'bg-slate-50 dark:bg-black',
-        'h-screen px-4 py-10',
+        'h-screen px-4 pb-5 pt-10',
         'sm:sticky sm:top-0 sm:min-h-screen',
         'lg:border-x lg:border-slate-200 dark:border-slate-800',
       )}
@@ -97,7 +97,7 @@ const SideNavigation = ({ allAlbums, allSongs }: SideNavigationProps) => {
         </div>
       </div>
 
-      <div className="relative mt-auto flex items-center">
+      <div className="relative mt-auto flex flex-col items-center gap-2">
         <input
           id="search"
           name="search"
