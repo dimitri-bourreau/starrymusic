@@ -53,14 +53,25 @@ export default function Home() {
           </div>
         </div>
 
-        <Link href="/toutes-les-musiques" className="mx-auto">
-          <button
-            type="button"
-            className="rounded bg-indigo-50 px-2 py-1 text-lg font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
-          >
-            Voir toutes les musiques
-          </button>
-        </Link>
+        <div className="flex flex-col items-center gap-2">
+          <Link href="/toutes-les-musiques">
+            <button
+              type="button"
+              className="rounded bg-indigo-50 px-2 py-1 text-lg font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
+            >
+              Voir toutes les musiques
+            </button>
+          </Link>
+          <Link href="/tous-les-albums">
+            <button
+              type="button"
+              className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50"
+            >
+              Voir tous les albums
+            </button>
+          </Link>
+        </div>
+
         <div className="mt-auto px-10 pb-10">
           <ExternalLinks />
         </div>
