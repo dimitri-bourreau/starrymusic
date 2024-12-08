@@ -1,5 +1,3 @@
-import { getAlbums } from '@/features/album/get-albums.feature'
-import { outputs } from '@/config/outputs.config'
 import { Albums } from '@/features/album/types/albums.type'
 import { TitlesList } from '@/components/client/TitlesList'
 
