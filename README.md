@@ -19,3 +19,9 @@ npm run dev
   - Vous pouvez proposer une PR pointant sur `main`. 
 - Sans GitHub
   - Vous pouvez me contacter à `dimitri@release-dev.com`.
+
+## Générer les types depuis Supabase
+
+```bash
+npx supabase gen types typescript --project-id demander-cet-id > supabase/database.type.ts
+```
