@@ -16,7 +16,7 @@ export default function ExternalLinks() {
 
       <ul
         role="list"
-        className="mt-4 flex justify-center gap-10 text-base font-medium leading-7 text-slate-700 sm:gap-8 lg:flex-col lg:gap-4"
+        className="mt-4 flex flex-col justify-center gap-4 text-base font-medium leading-7 text-slate-700 sm:gap-10 sm:gap-8 lg:gap-4"
       >
         {(
           [
