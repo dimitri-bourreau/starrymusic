@@ -33,6 +33,7 @@ export default function ExternalLinks() {
               'Wiki fandom dédié à Starrysky',
               'https://starrysky.fandom.com/fr/wiki/Starrysky',
             ],
+            ['Code source', 'https://github.com/dimitri-bourreau/starrymusic'],
           ] as const
         ).map(([label, link]) => (
           <li key={label} className="flex">
