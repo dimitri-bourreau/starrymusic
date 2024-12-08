@@ -14,4 +14,5 @@ export const mockAlbum: Album = {
   band_camp:
     'https://starrysky.bandcamp.com/album/timeshift-lalbum-qui-s-coute-lenvers',
   other_links: null,
+  wiki_url: null,
 }
