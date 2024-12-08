@@ -1,5 +1,3 @@
-import { getAllSongs } from '@/features/song/get-all-songs.feature'
-import { outputs } from '@/config/outputs.config'
 import { TitlesList } from '@/components/client/TitlesList'
 import { Songs } from '@/features/song/types/songs.type'
 
