@@ -14,12 +14,12 @@ export const AlbumTableLine = async ({ album, image }: AlbumTableLineProps) => {
   const { title, year } = album
   const router = useRouter()
 
-  const songUrl = encodeURI(`/${title}`)
+  const albumUrl = encodeURI(`/albums/${title}`)
 
   return (
     <tr
       className="cursor-pointer whitespace-nowrap px-3 py-4 text-sm text-gray-500 hover:bg-pink-600/10 dark:hover:bg-pink-600/50"
-      onClick={() => router.push(songUrl)}
+      onClick={() => router.push(albumUrl)}
     >
       <td>
         <Image
