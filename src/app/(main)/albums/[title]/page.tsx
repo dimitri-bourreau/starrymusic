@@ -11,6 +11,7 @@ import { getSetlists } from '@/features/album/get-setlists.feature'
 import { getSetlist } from '@/features/album/get-setlist.feature'
 import { getAllSongs } from '@/features/song/get-all-songs.feature'
 import { Songs } from '@/features/song/types/songs.type'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   const titles = await getAllAlbumsTitles(outputs.album)
@@ -50,8 +51,8 @@ export default async function Page({ params }: PageProps) {
         </p>
       ) : (
         <>
-          <div className="flex gap-4 px-4 py-5 sm:p-6">
-            <div>
+          <div className="flex flex-col items-center justify-between gap-4 px-4 py-5 sm:p-6 md:flex-row md:items-start">
+            <div className="flex flex-col justify-start md:flex-row">
               {image && (
                 <Image
                   src={image.url}
@@ -61,38 +62,70 @@ export default async function Page({ params }: PageProps) {
                   height={250}
                 />
               )}
+              <div className="mt-4 flex flex-col justify-center px-4 sm:px-6 md:mt-0 lg:px-8">
+                <h1 className="text-2xl font-semibold leading-7 text-slate-700 dark:text-white">
+                  {album.title}
+                </h1>
+                <p className="text-gray-500">{album.year}</p>
+                <MediaLinks
+                  className="mt-4"
+                  links={[
+                    {
+                      href: album.you_tube,
+                      label: 'YouTube',
+                    },
+                    {
+                      href: album.spotify,
+                      label: 'Spotify',
+                    },
+                    {
+                      href: album.deezer,
+                      label: 'Deezer',
+                    },
+                    {
+                      href: album.apple_music,
+                      label: 'Apple Music',
+                    },
+                    {
+                      href: album.band_camp,
+                      label: 'BandCamp',
+                    },
+                  ]}
+                />
+              </div>
             </div>
-            <div className="flex flex-col justify-center px-4 sm:px-6 lg:px-8">
-              <h1 className="text-2xl font-semibold leading-7 text-slate-700 dark:text-white">
-                {album.title}
-              </h1>
-              <p className="text-gray-500">{album.year}</p>
-              <MediaLinks
-                className="mt-4"
-                links={[
-                  {
-                    href: album.you_tube,
-                    label: 'YouTube',
-                  },
-                  {
-                    href: album.spotify,
-                    label: 'Spotify',
-                  },
-                  {
-                    href: album.deezer,
-                    label: 'Deezer',
-                  },
-                  {
-                    href: album.apple_music,
-                    label: 'Apple Music',
-                  },
-                  {
-                    href: album.band_camp,
-                    label: 'BandCamp',
-                  },
-                ]}
-              />
-            </div>
+            {album.wiki_url && (
+              <div className="flex items-center">
+                <div className="bg-white shadow sm:rounded-lg">
+                  <div className="px-4 py-5 sm:p-6">
+                    <h3 className="text-base font-semibold text-gray-900">
+                      Page Wiki fandom
+                    </h3>
+                    <div className="mt-2 max-w-xl text-sm text-gray-500">
+                      <p>
+                        Découvrez un max de détails de{' '}
+                        <span className="font-bold">{album.title}</span> sur le
+                        wiki fandom !
+                      </p>
+                    </div>
+                    <div className="mt-5">
+                      <Link
+                        href={album.wiki_url}
+                        title={`${album.title} sur starrysky.fandom.com`}
+                        target="_blank"
+                      >
+                        <button
+                          type="button"
+                          className="inline-flex items-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
+                        >
+                          Plus sur starrysky.fandom.com
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <Suspense>
             <AlbumSetlist setlistSongs={setlistSongs} />

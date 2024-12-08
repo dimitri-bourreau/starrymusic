@@ -19,6 +19,7 @@ export type Database = {
           other_links: string[] | null
           spotify: string | null
           title: string
+          wiki_url: string | null
           work_in_progress: boolean | null
           year: number | null
           you_tube: string | null
@@ -32,6 +33,7 @@ export type Database = {
           other_links?: string[] | null
           spotify?: string | null
           title: string
+          wiki_url?: string | null
           work_in_progress?: boolean | null
           year?: number | null
           you_tube?: string | null
@@ -45,11 +47,20 @@ export type Database = {
           other_links?: string[] | null
           spotify?: string | null
           title?: string
+          wiki_url?: string | null
           work_in_progress?: boolean | null
           year?: number | null
           you_tube?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "albums_image_fkey"
+            columns: ["image"]
+            isOneToOne: false
+            referencedRelation: "images"
+            referencedColumns: ["ID"]
+          },
+        ]
       }
       images: {
         Row: {
@@ -68,6 +79,38 @@ export type Database = {
           url?: string
         }
         Relationships: []
+      }
+      official_videos: {
+        Row: {
+          description: string | null
+          id: number
+          song_id: number | null
+          title: string | null
+          url: string | null
+        }
+        Insert: {
+          description?: string | null
+          id?: number
+          song_id?: number | null
+          title?: string | null
+          url?: string | null
+        }
+        Update: {
+          description?: string | null
+          id?: number
+          song_id?: number | null
+          title?: string | null
+          url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "official_videos_song_id_fkey"
+            columns: ["song_id"]
+            isOneToOne: false
+            referencedRelation: "songs"
+            referencedColumns: ["ID"]
+          },
+        ]
       }
       setlists: {
         Row: {
