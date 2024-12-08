@@ -1,45 +1,15 @@
 import { getAllSongs } from '@/features/song/get-all-songs.feature'
 import { outputs } from '@/config/outputs.config'
-import { Song } from '@/features/song/types/song.type'
-import Image from 'next/image'
+import { SongTableLine } from '@/components/client/SongTableLine'
 import { getImage } from '@/features/image/get-image.feature'
-import Link from 'next/link'
 
 export const revalidate = 60
 
-const SongTableLine = async ({ song }: { song: Song }) => {
-  const { title, year, duration, image_id } = song
-  const image = await getImage(outputs.image, image_id)
-  const songUrl = encodeURI(`/${title}`)
-
-  return (
-    <tr className="cursor-pointer whitespace-nowrap px-3 py-4 text-sm text-gray-500 hover:bg-pink-600/10 dark:hover:bg-pink-600/50">
-      <td>
-        <Link href={songUrl}>
-          <Image
-            alt={image.name}
-            src={image.url}
-            className="h-12 w-12 flex-none rounded-md bg-gray-50"
-            width={200}
-            height={200}
-          />
-        </Link>
-      </td>
-      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-        <Link href={songUrl}>{title}</Link>
-      </td>
-      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-        <Link href={songUrl}>{year}</Link>
-      </td>
-      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-        <Link href={songUrl}>{duration}</Link>
-      </td>
-    </tr>
-  )
-}
-
 export default async function Home() {
   const allSongs = await getAllSongs(outputs.song)
+  const images = await Promise.all(
+    allSongs.map(({ image_id }) => getImage(outputs.image, image_id)),
+  )
 
   return (
     <div className="px-4 py-5 pt-10 sm:px-6 lg:px-8">
@@ -81,8 +51,12 @@ export default async function Home() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  {allSongs.map((song) => (
-                    <SongTableLine key={song.ID} song={song} />
+                  {allSongs.map(async (song, index) => (
+                    <SongTableLine
+                      key={song.ID}
+                      song={song}
+                      image={images[index]}
+                    />
                   ))}
                 </tbody>
               </table>
