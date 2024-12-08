@@ -13,7 +13,7 @@ const SongTableLine = async ({ song }: { song: Song }) => {
   const songUrl = encodeURI(`/${title}`)
 
   return (
-    <tr className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+    <tr className="cursor-pointer whitespace-nowrap px-3 py-4 text-sm text-gray-500 hover:bg-pink-600/10 dark:hover:bg-pink-600/50">
       <td>
         <Link href={songUrl}>
           <Image
