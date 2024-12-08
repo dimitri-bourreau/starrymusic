@@ -59,23 +59,28 @@ const SongDetails = ({ song, associatedAlbumTitle }: MusicDetailsProps) => {
           {song.duration}
         </dd>
       </div>
-      <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
-          Crédits
-        </dt>
-        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 dark:text-white">
-          <ul>
-            {song.credits_music && <li>Musique : {song.credits_music}</li>}
-            {song.credits_lyrics && <li>Paroles : {song.credits_lyrics}</li>}
-            {song.credits_lead_vocals && (
-              <li>Voix principale : {song.credits_lead_vocals}</li>
-            )}
-            {song.credits_extra && (
-              <p className="whitespace-pre-line">{song.credits_extra}</p>
-            )}
-          </ul>
-        </dd>
-      </div>
+      {(song.credits_music ||
+        song.credits_lyrics ||
+        song.credits_lead_vocals ||
+        song.credits_extra) && (
+        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt className="text-sm font-medium leading-6 text-gray-900 dark:text-white">
+            Crédits
+          </dt>
+          <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 dark:text-white">
+            <ul>
+              {song.credits_music && <li>Musique : {song.credits_music}</li>}
+              {song.credits_lyrics && <li>Paroles : {song.credits_lyrics}</li>}
+              {song.credits_lead_vocals && (
+                <li>Voix principale : {song.credits_lead_vocals}</li>
+              )}
+              {song.credits_extra && (
+                <p className="whitespace-pre-line">{song.credits_extra}</p>
+              )}
+            </ul>
+          </dd>
+        </div>
+      )}
     </dl>
   )
 }
