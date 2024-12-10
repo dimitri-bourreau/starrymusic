@@ -65,7 +65,7 @@ export default function Home() {
           <Link href="/tous-les-albums">
             <button
               type="button"
-              className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
+              className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
             >
               Tous les albums
             </button>
@@ -73,14 +73,14 @@ export default function Home() {
           <Link href="/toutes-les-covers">
             <button
               type="button"
-              className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
+              className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
             >
               Toutes les covers
             </button>
           </Link>
         </div>
 
-        <div className="mt-auto px-10 pb-10">
+        <div className="mt-10 px-10 pb-10 sm:mt-0">
           <ExternalLinks />
         </div>
       </div>
