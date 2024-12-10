@@ -6,9 +6,10 @@ import { usePathname, useRouter } from 'next/navigation'
 
 interface SongTabsProps {
   title: string
+  proposeCovers?: boolean
 }
 
-const SongTabs = ({ title }: SongTabsProps) => {
+const SongTabs = ({ title, proposeCovers }: SongTabsProps) => {
   const router = useRouter()
   const pathName = usePathname()
 
@@ -24,6 +25,13 @@ const SongTabs = ({ title }: SongTabsProps) => {
       current: pathName.includes('details'),
     },
   ]
+
+  if (proposeCovers)
+    tabs.push({
+      name: 'Covers',
+      href: `/${title}/covers`,
+      current: pathName.includes('covers'),
+    })
 
   return (
     <div>

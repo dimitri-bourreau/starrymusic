@@ -8,6 +8,7 @@ import { getAlbum } from '@/features/album/get-album.feature'
 import { getImage } from '@/features/image/get-image.feature'
 import { getAllSongs } from '@/features/song/get-all-songs.feature'
 import { getAlbums } from '@/features/album/get-albums.feature'
+import { getCovers } from '@/features/cover/get-covers.feature'
 
 interface MusicLayoutProps {
   children: ReactNode
@@ -22,6 +23,7 @@ export default async function MusicLayout({
 }: MusicLayoutProps) {
   const albums = await getAlbums(outputs.album)
   const songs = await getAllSongs(outputs.song)
+  const covers = await getCovers(outputs.cover)
 
   const song = getSongByTitle({
     titleToFind: decodeURIComponent(params.title),
@@ -85,7 +87,12 @@ export default async function MusicLayout({
             </div>
           </div>
 
-          <SongTabs title={params.title} />
+          <SongTabs
+            title={params.title}
+            proposeCovers={
+              !!covers.find(({ song: songId }) => songId === song.ID)
+            }
+          />
 
           {children}
         </>
