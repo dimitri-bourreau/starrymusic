@@ -9,8 +9,6 @@ export class ImageApi implements ImageOutput {
       .select()
       .eq('ID', imageId)
     if (image === null || !image[0] || error) {
-      console.log(image)
-      console.log('---------')
       throw new Error(`Échec de la récupération de l'image à l'id ${imageId}`)
     }
     return image[0]

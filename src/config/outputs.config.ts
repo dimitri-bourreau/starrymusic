@@ -4,15 +4,19 @@ import { SongOutput } from '@/features/song/infrastructure/song.output'
 import { SongApi } from '@/features/song/infrastructure/song.api'
 import { ImageOutput } from '@/features/image/infrastructure/image.output'
 import { ImageApi } from '@/features/image/infrastructure/image.api'
+import { CoverOutput } from '@/features/cover/infrastructure/cover.output'
+import { CoverApi } from '@/features/cover/infrastructure/cover.api'
 
 interface Outputs {
   album: AlbumOutput
-  song: SongOutput
+  cover: CoverOutput
   image: ImageOutput
+  song: SongOutput
 }
 
 export const outputs: Outputs = {
   album: new AlbumApi(),
-  song: new SongApi(),
+  cover: new CoverApi(),
   image: new ImageApi(),
+  song: new SongApi(),
 }

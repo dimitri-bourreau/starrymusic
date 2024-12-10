@@ -62,6 +62,38 @@ export type Database = {
           },
         ]
       }
+      covers: {
+        Row: {
+          cover_url: string | null
+          id: number
+          image_url: string | null
+          song: number | null
+          title: string | null
+        }
+        Insert: {
+          cover_url?: string | null
+          id?: number
+          image_url?: string | null
+          song?: number | null
+          title?: string | null
+        }
+        Update: {
+          cover_url?: string | null
+          id?: number
+          image_url?: string | null
+          song?: number | null
+          title?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "covers_song_fkey"
+            columns: ["song"]
+            isOneToOne: false
+            referencedRelation: "songs"
+            referencedColumns: ["ID"]
+          },
+        ]
+      }
       images: {
         Row: {
           ID: number

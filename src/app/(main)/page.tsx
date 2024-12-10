@@ -59,7 +59,7 @@ export default function Home() {
               type="button"
               className="rounded bg-indigo-50 px-2 py-1 text-lg font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
             >
-              Voir toutes les musiques
+              Toutes les musiques
             </button>
           </Link>
           <Link href="/tous-les-albums">
@@ -67,7 +67,15 @@ export default function Home() {
               type="button"
               className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
             >
-              Voir tous les albums
+              Tous les albums
+            </button>
+          </Link>
+          <Link href="/toutes-les-covers">
+            <button
+              type="button"
+              className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
+            >
+              Toutes les covers
             </button>
           </Link>
         </div>
