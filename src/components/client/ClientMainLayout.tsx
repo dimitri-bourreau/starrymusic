@@ -27,21 +27,22 @@ export const ClientMainLayout = ({
           className={clsx(
             { hidden: pathName === '/' },
             'md:hidden',
-            'mt-5 flex items-center justify-center',
+            'mt-5 flex flex-row items-center justify-center',
           )}
         >
           <Link
             href={'/'}
-            className="overflow-hidden rounded-lg bg-slate-200 shadow-xl shadow-slate-200 sm:rounded-xl lg:rounded-2xl dark:shadow-slate-800"
+            className="overflow-hidden rounded-lg sm:rounded-xl lg:rounded-2xl "
             aria-label="Retour à l'accueil"
           >
             <Image
-              className="w-24 rounded"
+              className="w-24 rounded shadow-lg shadow-slate-200 dark:shadow-slate-800"
               src={posterImage}
               alt="Retour à l'accueil"
               sizes="(min-width: 1024px) 20rem, (min-width: 640px) 16rem, 12rem"
               priority
             />
+            <h1>starrymusic.fr</h1>
           </Link>
         </div>
         <div className="w-full">{children}</div>
