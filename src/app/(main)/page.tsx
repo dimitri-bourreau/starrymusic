@@ -62,22 +62,24 @@ export default function Home() {
               Toutes les musiques
             </button>
           </Link>
-          <Link href="/tous-les-albums">
-            <button
-              type="button"
-              className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
-            >
-              Tous les albums
-            </button>
-          </Link>
-          <Link href="/toutes-les-covers">
-            <button
-              type="button"
-              className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
-            >
-              Toutes les covers
-            </button>
-          </Link>
+          <div className="flex gap-2">
+            <Link href="/tous-les-albums">
+              <button
+                type="button"
+                className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
+              >
+                Albums
+              </button>
+            </Link>
+            <Link href="/toutes-les-covers">
+              <button
+                type="button"
+                className="rounded bg-indigo-50/50 px-2 py-1 text-sm shadow-sm hover:bg-indigo-50 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-900 dark:hover:text-pink-500"
+              >
+                Covers
+              </button>
+            </Link>
+          </div>
         </div>
 
         <div className="mt-10 px-10 pb-10 sm:mt-0">
