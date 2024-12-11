@@ -42,7 +42,7 @@ export const ClientMainLayout = ({
               sizes="(min-width: 1024px) 20rem, (min-width: 640px) 16rem, 12rem"
               priority
             />
-            <h1>starrymusic.fr</h1>
+            <h1 className="dark:text-gray-200">starrymusic.fr</h1>
           </Link>
         </div>
         <div className="w-full">{children}</div>
