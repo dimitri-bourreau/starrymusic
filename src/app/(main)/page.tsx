@@ -27,7 +27,7 @@ export default function Home() {
         </span>
       </div>
 
-      <div className="flex h-screen flex-col gap-4">
+      <div className="flex h-screen flex-col justify-between gap-4">
         <div className="flex flex-col items-center gap-4 px-4 pb-4 pt-10 sm:px-6 md:px-4 lg:flex-row lg:px-8 lg:py-12 xl:px-12">
           <Link
             href="/"
