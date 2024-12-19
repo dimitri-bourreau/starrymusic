@@ -57,7 +57,7 @@ export default async function Home() {
                       </Link>
                     </div>
                     <div className="-ml-px flex w-0 flex-1 cursor-pointer items-center justify-center p-2">
-                      <Link href={encodeURI(`/${songTitle}`)}>
+                      <Link href={encodeURI(`/${songTitle}`)} prefetch={false}>
                         <p className="text-sm hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-400">
                           {songTitle}
                         </p>

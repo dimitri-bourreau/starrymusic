@@ -62,6 +62,7 @@ const SongTabs = ({ title, proposeCovers }: SongTabsProps) => {
             {tabs.map((tab) => (
               <Link
                 key={tab.name}
+                prefetch={false}
                 href={tab.href}
                 aria-current={tab.current ? 'page' : undefined}
                 className={clsx(
