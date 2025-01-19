@@ -13,7 +13,7 @@ export default async function Home() {
   return (
     <div className="px-4 py-5 pt-10 sm:px-6 lg:px-8">
       <h1 className="text-2xl font-semibold leading-7 text-slate-700 dark:text-white">
-        Toutes les covers
+        Covers
       </h1>
 
       <div className="mt-5">
