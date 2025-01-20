@@ -6,16 +6,16 @@ export default function NotFound() {
       <div className="relative mx-auto flex w-full max-w-2xl flex-col items-center px-4 sm:px-6 lg:px-0">
         <p className="font-mono text-sm leading-7 text-slate-500">404</p>
         <h1 className="mt-4 text-lg font-bold text-slate-900">
-          Page not found
+          404, pas trouvé
         </h1>
         <p className="mt-2 text-base leading-7 text-slate-700">
-          Sorry, we couldn’t find the page you’re looking for.
+          C&apos;est la cata, la cata !
         </p>
         <Link
           href="/"
           className="mt-4 text-sm font-bold leading-6 text-pink-500 hover:text-pink-700 active:text-pink-900"
         >
-          Go back home
+          Revenir à l&apos;accueil
         </Link>
       </div>
     </main>

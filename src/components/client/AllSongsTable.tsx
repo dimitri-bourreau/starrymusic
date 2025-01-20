@@ -54,14 +54,14 @@ export const AllSongsTable = ({ songs, images }: AllSongsTableProps) => {
   }, [searchTerm])
 
   useEffect(() => {
-    if (debouncedTerm.length === 0) {
+    if (debouncedTerm.length === 0 && searchQuery?.length !== 0) {
       router.push(pathName)
     } else {
       const params = new URLSearchParams(searchParams.toString())
       params.set('songSearch', debouncedTerm)
       router.push(`${pathName}?${params}`, { scroll: false })
     }
-  }, [debouncedTerm, pathName, router, searchParams])
+  }, [debouncedTerm, pathName, router, searchParams, searchQuery])
 
   useEffect(() => {
     if (searchQuery?.toLowerCase() === 'caca') {
@@ -95,7 +95,6 @@ export const AllSongsTable = ({ songs, images }: AllSongsTableProps) => {
         placeholder="Rechercher..."
         onChange={(event) => setSearchTerm(event.target.value)}
         defaultValue={searchQuery || ''}
-        autoFocus
         className="my-5 block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 dark:bg-black dark:text-white"
       />
       <div className="flow-root">
