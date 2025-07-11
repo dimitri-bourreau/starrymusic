@@ -18,7 +18,7 @@
     "@types/react-dom": "^18.2.18",
     "autoprefixer": "^10.4.12",
     "clsx": "^2.1.0",
-    "next": "^14.0.4",
+    "next": "^14.2.30",
     "react": "^18.2.0",
     "react-aria": "^3.19.0",
     "react-dom": "^18.2.0",
